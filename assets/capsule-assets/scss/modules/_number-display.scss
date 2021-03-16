@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Number Display style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$number-display-class-name: '.number-display' !default;
+$number-display-font-size-big: 2.0em !default;
+$number-display-font-size-small: 1.0em !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#{$number-display-class-name} {
+
+  * {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.0em;
+    margin-top: 0;
+  }
+
+  em,
+  strong {
+    font-size: $number-display-font-size-big;
+  }
+
+  span,
+  small {
+    font-size: $number-display-font-size-small;
+  }
+
+}

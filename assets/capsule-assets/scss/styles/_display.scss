@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+/* ========================================================
+  Display style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$display-style-name: '.display-' !default;
+$default-display-type: inline,
+block,
+list-item,
+run-in,
+inline-block,
+table,
+inline-table,
+table-row-group,
+table-header-group,
+table-footer-group,
+table-row,
+table-column-group,
+table-column,
+table-cell,
+table-caption,
+none,
+inherit,
+flex,
+inline-flex,
+grid,
+inline-grid !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+@each $type in $default-display-type {
+  &#{$display-style-name + $type} {
+    display: $type;
+  }
+}

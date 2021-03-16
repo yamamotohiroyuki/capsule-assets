@@ -1,0 +1,43 @@
+@charset 'UTF-8';
+/* ========================================================
+  Breakpoints Variation
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Breakpoints Default
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Breakpoints
+-------------------------------------------------------- */
+$breakpoint-mini: 320px !default;
+$breakpoint-tiny: 416px !default;
+$breakpoint-small: 576px !default;
+$breakpoint-medium: 768px !default;
+$breakpoint-large: 992px !default;
+$breakpoint-big: 1184px !default;
+$breakpoint-huge: 1408px !default;
+$breakpoint-massive: 1600px !default;
+$breakpoint-gigantic: 2400px !default;
+
+$breakpoints: (
+  /* array */
+  mini : $breakpoint-mini,
+  tiny : $breakpoint-tiny,
+  small : $breakpoint-small,
+  medium : $breakpoint-medium,
+  large : $breakpoint-large,
+  big : $breakpoint-big,
+  huge : $breakpoint-huge,
+  massive: $breakpoint-massive,
+  gigantic: $breakpoint-gigantic
+  /* array */
+);
+
+@function breakpoint($key) {
+  @if type-of($key)==number {
+    @return $key+0px;
+  }
+
+  @else {
+    @return map-get($breakpoints, $key);
+  }
+}

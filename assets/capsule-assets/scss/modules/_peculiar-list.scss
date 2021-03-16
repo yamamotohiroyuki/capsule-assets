@@ -1,0 +1,370 @@
+@charset 'UTF-8';
+/* ========================================================
+  Peculiar List style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$list-margin-peculiar: 2.75em !default;
+$list-peculiar-class-name: '.list-peculiar' !default;
+
+/* brackets margin */
+$list-brackets-margin: $list-margin-peculiar !default;
+/* (1) カッコに数字 */
+$list-brackets-decimal: true !default;
+/* (i) カッコに小文字ローマ数字 */
+$list-brackets-lower-roman: true !default;
+/* (I) カッコに大文字ローマ数字 */
+$list-brackets-upper-roman: true !default;
+/* (a) カッコに小文字アルファベット */
+$list-brackets-lower-alpha: true !default;
+/* (A) カッコに大文字アルファベット */
+$list-brackets-upper-alpha: true !default;
+/* (あ) カッコにひらがな */
+$list-brackets-hiragana: false !default;
+/* (い) カッコにいろは */
+$list-brackets-hiragana-iroha: false !default;
+/* (ア) カッコにカタカナ */
+$list-brackets-katakana: false !default;
+/* (イ) カッコにイロハ */
+$list-brackets-katakana-iroha: false !default;
+
+/* side brackets margin */
+$list-side-brackets-margin: $list-margin-peculiar !default;
+/* 1) カッコに数字 */
+$list-side-brackets-decimal: true !default;
+/* i) カッコに小文字ローマ数字 */
+$list-side-brackets-lower-roman: true !default;
+/* I) カッコに大文字ローマ数字 */
+$list-side-brackets-upper-roman: true !default;
+/* a) カッコに小文字アルファベット */
+$list-side-brackets-lower-alpha: true !default;
+/* A) カッコに大文字アルファベット */
+$list-side-brackets-upper-alpha: true !default;
+/* あ) カッコにひらがな */
+$list-side-brackets-hiragana: false !default;
+/* い) カッコにいろは */
+$list-side-brackets-hiragana-iroha: false !default;
+/* ア) カッコにカタカナ */
+$list-side-brackets-katakana: false !default;
+/* イ) カッコにイロハ */
+$list-side-brackets-katakana-iroha: false !default;
+
+/* dot margin */
+$list-dot-margin: $list-margin-peculiar !default;
+/* 1. ドットに数字 */
+$list-dot-decimal: true !default;
+/* i. ドットに小文字ローマ数字 */
+$list-dot-lower-roman: true !default;
+/* I. ドットに大文字ローマ数字 */
+$list-dot-upper-roman: true !default;
+/* a. ドットに小文字アルファベット */
+$list-dot-lower-alpha: true !default;
+/* A. ドットに大文字アルファベット */
+$list-dot-upper-alpha: true !default;
+/* あ. ドットにひらがな */
+$list-dot-hiragana: false !default;
+/* い. ドットにいろは */
+$list-dot-hiragana-iroha: false !default;
+/* ア. ドットにカタカナ */
+$list-dot-katakana: false !default;
+/* イ. ドットにイロハ */
+$list-dot-katakana-iroha: false !default;
+
+/* character */
+/* ① 丸数字 */
+$list-circle-decimal: false !default;
+/* ❶ 丸数字 */
+$list-round-decimal: false !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Mixin
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin peculiar-list-syle($class-name, $before, $after, $format, $margin) {
+  &.is-#{$class-name} {
+    @if $list-margin-peculiar !=$margin {
+      margin-left: $margin;
+    }
+
+    >li {
+      @if $list-margin-peculiar !=$margin {
+        text-indent: ($margin * -1);
+      }
+
+      &::before {
+        @if $list-margin-peculiar !=$margin {
+          text-indent: 0;
+        }
+
+        content: $before counter(count, $format) $after;
+      }
+    }
+  }
+}
+
+@mixin peculiar-list-brackets($class-name, $format) {
+  @include peculiar-list-syle($class-name, '( ', ' )', $format, $list-brackets-margin);
+}
+
+@mixin peculiar-list-side-brackets($class-name, $format) {
+  @include peculiar-list-syle($class-name, '', ' )', $format, $list-side-brackets-margin);
+}
+
+@mixin peculiar-list-dot($class-name, $format) {
+  @include peculiar-list-syle($class-name, '', ' .', $format, $list-dot-margin);
+}
+
+
+@mixin peculiar-list-syle-jp($class-name, $before, $after, $array, $margin) {
+  @if $list-margin-peculiar !=$margin {
+    margin-left: $margin;
+  }
+
+  &.is-#{$class-name} {
+    >li {
+      @if $list-margin-peculiar !=$margin {
+        text-indent: ($margin * -1);
+      }
+
+      &::before {
+        @if $list-margin-peculiar !=$margin {
+          text-indent: 0;
+        }
+      }
+
+      @each $value in $array {
+        $key: index($array, $value);
+
+        &:nth-child(#{$key}) {
+          &::before {
+            content: ($before + nth($array, $key) + $after);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin peculiar-list-brackets-jp($class-name, $array) {
+  @include peculiar-list-syle-jp($class-name, '( ', ' )', $array, $list-brackets-margin);
+}
+
+@mixin peculiar-list-side-brackets-jp($class-name, $array) {
+  @include peculiar-list-syle-jp($class-name, '', ' )', $array, $list-side-brackets-margin);
+}
+
+@mixin peculiar-list-dot-jp($class-name, $array) {
+  @include peculiar-list-syle-jp($class-name, '', ' .', $array, $list-dot-margin);
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$list-peculiar-class-name} {
+  margin-left: $list-margin-peculiar;
+  counter-reset: count 0;
+
+  >li {
+    counter-increment: count;
+    list-style-type: none;
+    list-style-position: inside;
+    text-indent: ($list-margin-peculiar * -1);
+
+    &::before {
+      display: inline-block;
+      width: $list-margin-peculiar;
+      text-indent: 0;
+    }
+  }
+
+
+  /* brackets */
+  @if $list-brackets-decimal or $is-module-sample {
+    /* (1) カッコに数字 */
+    @include peculiar-list-brackets(brackets-decimal, decimal);
+  }
+
+  @if $list-brackets-lower-roman or $is-module-sample {
+    /* (i) カッコに数字 */
+    @include peculiar-list-brackets(brackets-lower-roman, lower-roman);
+  }
+
+  @if $list-brackets-upper-roman or $is-module-sample {
+    /* (I) カッコに小文字ローマ数字 */
+    @include peculiar-list-brackets(brackets-upper-roman, upper-roman);
+  }
+
+  @if $list-brackets-lower-alpha or $is-module-sample {
+    /* (a) カッコに小文字アルファベット */
+    @include peculiar-list-brackets(brackets-lower-alpha, lower-alpha);
+  }
+
+  @if $list-brackets-upper-alpha or $is-module-sample {
+    /* (A) カッコに大文字アルファベット */
+    @include peculiar-list-brackets(brackets-upper-alpha, upper-alpha);
+  }
+
+  @if $list-brackets-hiragana or $is-module-sample {
+    /* (あ) カッコにひらがな */
+    @include peculiar-list-brackets-jp(brackets-hiragana, $set-hiragana);
+  }
+
+  @if $list-brackets-hiragana-iroha or $is-module-sample {
+    /* (い) カッコにいろは */
+    @include peculiar-list-brackets-jp(brackets-hiragana-iroha, $set-hiragana-iroha);
+  }
+
+  @if $list-brackets-katakana or $is-module-sample {
+    /* (ア) カッコにカタカナ */
+    @include peculiar-list-brackets-jp(brackets-katakana, $set-katakana);
+  }
+
+  @if $list-brackets-katakana-iroha or $is-module-sample {
+    /* (イ) カッコにイロハ */
+    @include peculiar-list-brackets-jp(brackets-katakana-iroha, $set-katakana-iroha);
+  }
+
+
+  /* side brackets */
+  @if $list-side-brackets-decimal or $is-module-sample {
+    /* 1) カッコに数字 */
+    @include peculiar-list-side-brackets(side-brackets-decimal, decimal);
+  }
+
+  @if $list-side-brackets-lower-roman or $is-module-sample {
+    /* i) カッコに数字 */
+    @include peculiar-list-side-brackets(side-brackets-lower-roman, lower-roman);
+  }
+
+  @if $list-side-brackets-upper-roman or $is-module-sample {
+    /* I) カッコに小文字ローマ数字 */
+    @include peculiar-list-side-brackets(side-brackets-upper-roman, upper-roman);
+  }
+
+  @if $list-side-brackets-lower-alpha or $is-module-sample {
+    /* a) カッコに小文字アルファベット */
+    @include peculiar-list-side-brackets(side-brackets-lower-alpha, lower-alpha);
+  }
+
+  @if $list-side-brackets-upper-alpha or $is-module-sample {
+    /* A) カッコに大文字アルファベット */
+    @include peculiar-list-side-brackets(side-brackets-upper-alpha, upper-alpha);
+  }
+
+  @if $list-side-brackets-hiragana or $is-module-sample {
+    /* あ) カッコにひらがな */
+    @include peculiar-list-side-brackets-jp(side-brackets-hiragana, $set-hiragana);
+  }
+
+  @if $list-side-brackets-hiragana-iroha or $is-module-sample {
+    /* い) カッコにいろは */
+    @include peculiar-list-side-brackets-jp(side-brackets-hiragana-iroha, $set-hiragana-iroha);
+  }
+
+  @if $list-side-brackets-katakana or $is-module-sample {
+    /* ア) カッコにカタカナ */
+    @include peculiar-list-side-brackets-jp(side-brackets-katakana, $set-katakana);
+  }
+
+  @if $list-side-brackets-katakana-iroha or $is-module-sample {
+    /* イ) カッコにイロハ */
+    @include peculiar-list-side-brackets-jp(side-brackets-katakana-iroha, $set-katakana-iroha);
+  }
+
+
+  /* dot */
+  @if $list-dot-decimal or $is-module-sample {
+    /* 1. ドットに数字 */
+    @include peculiar-list-dot(dot-decimal, decimal);
+  }
+
+  @if $list-dot-lower-roman or $is-module-sample {
+    /* i. ドットに数字 */
+    @include peculiar-list-dot(dot-lower-roman, lower-roman);
+  }
+
+  @if $list-dot-upper-roman or $is-module-sample {
+    /* I. ドットに小文字ローマ数字 */
+    @include peculiar-list-dot(dot-upper-roman, upper-roman);
+  }
+
+  @if $list-dot-lower-alpha or $is-module-sample {
+    /* a. ドットに小文字アルファベット */
+    @include peculiar-list-dot(dot-lower-alpha, lower-alpha);
+  }
+
+  @if $list-dot-upper-alpha or $is-module-sample {
+    /* A. ドットに大文字アルファベット */
+    @include peculiar-list-dot(dot-upper-alpha, upper-alpha);
+  }
+
+  @if $list-dot-hiragana or $is-module-sample {
+    /* (あ) カッコにひらがな */
+    @include peculiar-list-dot-jp(dot-hiragana, $set-hiragana);
+  }
+
+  @if $list-dot-hiragana-iroha or $is-module-sample {
+    /* (い) カッコにいろは */
+    @include peculiar-list-dot-jp(dot-hiragana-iroha,
+      $set-hiragana-iroha);
+  }
+
+  @if $list-dot-katakana or $is-module-sample {
+    /* (ア) カッコにカタカナ */
+    @include peculiar-list-dot-jp(dot-katakana, $set-katakana);
+  }
+
+  @if $list-dot-katakana-iroha or $is-module-sample {
+    /* (イ) カッコにイロハ */
+    @include peculiar-list-dot-jp(dot-katakana-iroha, $set-katakana-iroha);
+  }
+
+
+  /* character */
+
+  @if $list-circle-decimal or $is-module-sample {
+
+    /* ① 丸数字 */
+    &.is-circle-decimal {
+      &>li {
+
+        @each $value in $circle-decimal {
+          $key: index($circle-decimal, $value);
+
+          &:nth-child(#{$key}) {
+            &::before {
+              content: $value;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+  @if $list-round-decimal or $is-module-sample {
+
+    /* ❶ 丸数字 */
+    &.is-round-decimal {
+
+      &>li {
+
+        @each $value in $round-decimal {
+          $key: index($round-decimal, $value);
+
+          &:nth-child(#{$key}) {
+            &::before {
+              content: $value;
+            }
+
+          }
+        }
+
+      }
+
+    }
+  }
+
+}

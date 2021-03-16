@@ -1,0 +1,66 @@
+@charset 'UTF-8';
+/* ========================================================
+  Divide Text style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$divide-text-class-name: '.divide-text' !default;
+$divide-text-margin-x: 1em !default;
+$divide-text-border-style: solid 1px #d4d9dd !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+%divide-text {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-top: 0;
+    display: block;
+    flex-shrink: 0;
+
+    @include margin-x($divide-text-margin-x);
+  }
+
+  &::before,
+  &::after {
+    margin-top: 0;
+    display: block;
+    flex-grow: 1;
+    border-top: $divide-text-border-style;
+    content: '';
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$divide-text-class-name} {
+  @extend %divide-text;
+
+  &-left {
+    @extend %divide-text;
+
+    span {
+      margin-left: 0;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &-right {
+    @extend %divide-text;
+
+    span {
+      margin-right: 0;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}

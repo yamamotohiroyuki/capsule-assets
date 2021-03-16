@@ -1,0 +1,37 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Align
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$align-type: left,
+center,
+right,
+justify !default;
+$vertical-align-type: top,
+text-top,
+middle,
+baseline,
+text-bottom,
+bottom !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.align {
+
+  @each $type in $align-type {
+    &-#{$type} {
+      text-align: $type !important;
+    }
+  }
+
+  @each $type in $vertical-align-type {
+    &-#{$type} {
+      vertical-align: $type !important;
+    }
+  }
+
+}

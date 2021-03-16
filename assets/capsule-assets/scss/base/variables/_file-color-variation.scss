@@ -1,0 +1,273 @@
+@charset 'UTF-8';
+/* ========================================================
+  File Colors Variation
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Related variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$colors-pallet: () !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  File Colors Default
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-file: #4f4f4f !default;
+$color-pdf: #f72702 !default;
+$color-xls: #10753c !default;
+$color-doc: #1e63c2 !default;
+$color-ppt: #ca4c28 !default;
+$color-zip: #518ba1 !default;
+$color-video: #4f4f4f !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  colors 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$file-colors: (
+  /* array */
+  file: $color-file,
+  pdf: $color-pdf,
+  xls: $color-xls,
+  doc: $color-doc,
+  ppt: $color-ppt,
+  zip: $color-zip,
+  video: $color-video
+  /* array */
+);
+
+@function file-colors($key) {
+  @return map-get($ui-colors, $key);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color file
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-file-100: color-tone($color-file, 10);
+$color-file-200: color-tone($color-file, 8);
+$color-file-300: color-tone($color-file, 6);
+$color-file-400: color-tone($color-file, 3);
+$color-file-500: color-tone($color-file, 0);
+$color-file-600: color-tone($color-file, -3);
+$color-file-700: color-tone($color-file, -6);
+$color-file-800: color-tone($color-file, -8);
+$color-file-900: color-tone($color-file, -10);
+
+$colors-file: (
+  /* array */
+  '100': $color-file-100,
+  '200': $color-file-200,
+  '300': $color-file-300,
+  '400': $color-file-400,
+  '500': $color-file-500,
+  '600': $color-file-600,
+  '700': $color-file-700,
+  '800': $color-file-800,
+  '900': $color-file-900
+  /* array */
+);
+
+@function colors-file($key) {
+  @return map-get($colors-file, $key);
+}
+
+$colors-pallet: colors-pallet-set('file', $colors-file);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color pdf
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-pdf-100: color-tone($color-pdf, 10);
+$color-pdf-200: color-tone($color-pdf, 8);
+$color-pdf-300: color-tone($color-pdf, 6);
+$color-pdf-400: color-tone($color-pdf, 3);
+$color-pdf-500: color-tone($color-pdf, 0);
+$color-pdf-600: color-tone($color-pdf, -3);
+$color-pdf-700: color-tone($color-pdf, -6);
+$color-pdf-800: color-tone($color-pdf, -8);
+$color-pdf-900: color-tone($color-pdf, -10);
+
+$colors-pdf: (
+  /* array */
+  '100': $color-pdf-100,
+  '200': $color-pdf-200,
+  '300': $color-pdf-300,
+  '400': $color-pdf-400,
+  '500': $color-pdf-500,
+  '600': $color-pdf-600,
+  '700': $color-pdf-700,
+  '800': $color-pdf-800,
+  '900': $color-pdf-900
+  /* array */
+);
+
+@function colors-pdf($key) {
+  @return map-get($colors-pdf, $key);
+}
+
+$colors-pallet: colors-pallet-set('pdf', $colors-pdf);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color xls
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-xls-100: color-tone($color-xls, 10);
+$color-xls-200: color-tone($color-xls, 8);
+$color-xls-300: color-tone($color-xls, 6);
+$color-xls-400: color-tone($color-xls, 3);
+$color-xls-500: color-tone($color-xls, 0);
+$color-xls-600: color-tone($color-xls, -3);
+$color-xls-700: color-tone($color-xls, -6);
+$color-xls-800: color-tone($color-xls, -8);
+$color-xls-900: color-tone($color-xls, -10);
+
+$colors-xls: (
+  /* array */
+  '100': $color-xls-100,
+  '200': $color-xls-200,
+  '300': $color-xls-300,
+  '400': $color-xls-400,
+  '500': $color-xls-500,
+  '600': $color-xls-600,
+  '700': $color-xls-700,
+  '800': $color-xls-800,
+  '900': $color-xls-900
+  /* array */
+);
+
+@function colors-xls($key) {
+  @return map-get($colors-xls, $key);
+}
+
+$colors-pallet: colors-pallet-set('xls', $colors-xls);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color doc
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-doc-100: color-tone($color-doc, 10);
+$color-doc-200: color-tone($color-doc, 8);
+$color-doc-300: color-tone($color-doc, 6);
+$color-doc-400: color-tone($color-doc, 3);
+$color-doc-500: color-tone($color-doc, 0);
+$color-doc-600: color-tone($color-doc, -3);
+$color-doc-700: color-tone($color-doc, -6);
+$color-doc-800: color-tone($color-doc, -8);
+$color-doc-900: color-tone($color-doc, -10);
+
+$colors-doc: (
+  /* array */
+  '100': $color-doc-100,
+  '200': $color-doc-200,
+  '300': $color-doc-300,
+  '400': $color-doc-400,
+  '500': $color-doc-500,
+  '600': $color-doc-600,
+  '700': $color-doc-700,
+  '800': $color-doc-800,
+  '900': $color-doc-900
+  /* array */
+);
+
+@function colors-doc($key) {
+  @return map-get($colors-doc, $key);
+}
+
+$colors-pallet: colors-pallet-set('doc', $colors-doc);
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color ppt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-ppt-100: color-tone($color-ppt, 10);
+$color-ppt-200: color-tone($color-ppt, 8);
+$color-ppt-300: color-tone($color-ppt, 6);
+$color-ppt-400: color-tone($color-ppt, 3);
+$color-ppt-500: color-tone($color-ppt, 0);
+$color-ppt-600: color-tone($color-ppt, -3);
+$color-ppt-700: color-tone($color-ppt, -6);
+$color-ppt-800: color-tone($color-ppt, -8);
+$color-ppt-900: color-tone($color-ppt, -10);
+
+$colors-ppt: (
+  /* array */
+  '100': $color-ppt-100,
+  '200': $color-ppt-200,
+  '300': $color-ppt-300,
+  '400': $color-ppt-400,
+  '500': $color-ppt-500,
+  '600': $color-ppt-600,
+  '700': $color-ppt-700,
+  '800': $color-ppt-800,
+  '900': $color-ppt-900
+  /* array */
+);
+
+@function colors-ppt($key) {
+  @return map-get($colors-ppt, $key);
+}
+
+$colors-pallet: colors-pallet-set('ppt', $colors-ppt);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color zip
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-zip-100: color-tone($color-zip, 10);
+$color-zip-200: color-tone($color-zip, 8);
+$color-zip-300: color-tone($color-zip, 6);
+$color-zip-400: color-tone($color-zip, 3);
+$color-zip-500: color-tone($color-zip, 0);
+$color-zip-600: color-tone($color-zip, -3);
+$color-zip-700: color-tone($color-zip, -6);
+$color-zip-800: color-tone($color-zip, -8);
+$color-zip-900: color-tone($color-zip, -10);
+
+$colors-zip: (
+  /* array */
+  '100': $color-zip-100,
+  '200': $color-zip-200,
+  '300': $color-zip-300,
+  '400': $color-zip-400,
+  '500': $color-zip-500,
+  '600': $color-zip-600,
+  '700': $color-zip-700,
+  '800': $color-zip-800,
+  '900': $color-zip-900
+  /* array */
+);
+
+@function colors-zip($key) {
+  @return map-get($colors-zip, $key);
+}
+
+$colors-pallet: colors-pallet-set('zip', $colors-zip);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color video
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-video-100: color-tone($color-video, 10);
+$color-video-200: color-tone($color-video, 8);
+$color-video-300: color-tone($color-video, 6);
+$color-video-400: color-tone($color-video, 3);
+$color-video-500: color-tone($color-video, 0);
+$color-video-600: color-tone($color-video, -3);
+$color-video-700: color-tone($color-video, -6);
+$color-video-800: color-tone($color-video, -8);
+$color-video-900: color-tone($color-video, -10);
+
+$colors-video: (
+  /* array */
+  '100': $color-video-100,
+  '200': $color-video-200,
+  '300': $color-video-300,
+  '400': $color-video-400,
+  '500': $color-video-500,
+  '600': $color-video-600,
+  '700': $color-video-700,
+  '800': $color-video-800,
+  '900': $color-video-900
+  /* array */
+);
+
+@function colors-video($key) {
+  @return map-get($colors-video, $key);
+}
+
+$colors-pallet: colors-pallet-set('video', $colors-video);

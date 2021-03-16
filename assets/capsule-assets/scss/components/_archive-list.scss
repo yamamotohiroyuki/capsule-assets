@@ -1,0 +1,329 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Archive List style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Base */
+$archive-list-class-name: '.archive-list' !default;
+$archive-list-breakpoint: 768px !default;
+
+/* style */
+$archive-list-font-size: 1.0em !default;
+$archive-list-line-height: 1.25 !default; // 'inherit' 禁止
+$archive-list-header-padding-right: 1.0em !default;
+
+$archive-list-y-padding-s: 16px !default;
+$archive-list-y-padding-l: 32px !default;
+
+$archive-list-revied-spase-s: 32px !default;
+$archive-list-revied-spase-l: 64px !default;
+
+$archive-list-revied-margin-s: 4px !default;
+$archive-list-revied-margin-l: 8px !default;
+
+$archive-list-divid-border: solid 1px #d4d9dd !default;
+$archive-list-divid-revied: dotted 1px #d4d9dd !default;
+
+$archive-list-top-border: true !default;
+$archive-list-bottom-border: true !default;
+
+/* sticker */
+
+$archive-time-class-name: '.time' !default;
+$archive-sticker-class-name: '.sticker' !default;
+$archive-time-font-size: 1.0em !default;
+$archive-time-color: #f00 !default;
+
+$archive-sticker-font-size: 0.75em !default;
+$archive-sticker-line-height: 1.15 !default;
+$archive-sticker-min-width: 80px !default;
+$archive-sticker-color: #fff !default;
+$archive-sticker-border-radius: 4px !default;
+$archive-sticker-bg-color: #000 !default;
+
+$archive-sticker-y-padding: 4px !default;
+$archive-sticker-x-padding: 16px !default;
+
+$archive-sticker-border: solid 1px #666 !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$archive-list-class-name} {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  font-size: $archive-list-font-size;
+  line-height: $archive-list-line-height;
+
+  @if $archive-list-bottom-border {
+    border-bottom: $archive-list-divid-border;
+  }
+
+  *+*,
+  li+li {
+    margin-top: 0;
+  }
+
+  >* {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0;
+    width: 100%;
+    @include padding-y($archive-list-y-padding-s);
+    border-top: $archive-list-divid-border;
+
+    @if not $archive-list-top-border {
+      &:first-child {
+        border-top: none;
+      }
+    }
+
+    &.is-revied {
+      position: relative;
+      padding-left: $archive-list-revied-spase-s;
+
+      #{$archive-list-class-name} {
+
+        &__header {
+          &:first-child {
+            &::before {
+              display: block;
+              width: calc((#{$archive-list-revied-spase-s} / 2) - #{$archive-list-revied-margin-s});
+              height: calc(50% + #{$archive-list-y-padding-s});
+              padding: 0;
+              margin: 0;
+              content: '';
+              position: absolute;
+              top: calc(#{$archive-list-y-padding-s} * -1);
+              left: calc((#{$archive-list-revied-spase-s} / 2) * -1);
+              border-bottom: $archive-list-divid-revied;
+              border-left: $archive-list-divid-revied;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__header {
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    white-space: nowrap;
+    padding-right: $archive-list-header-padding-right;
+
+    &.is-header-end {
+      padding-right: 0;
+    }
+  }
+
+  &__body {
+    display: block;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    padding-top: calc(#{$archive-list-y-padding-s} / 2);
+
+  }
+
+  @include media-min($archive-list-breakpoint) {
+    >* {
+
+      @include padding-y($archive-list-y-padding-l);
+
+      &.is-revied {
+        padding-left: $archive-list-revied-spase-l;
+
+        #{$archive-list-class-name} {
+
+          &__header {
+            &:first-child {
+              &::before {
+                width: calc((#{$archive-list-revied-spase-l} / 2) - #{$archive-list-revied-margin-l});
+                height: calc(50% + #{$archive-list-y-padding-l});
+
+                top: calc(#{$archive-list-y-padding-l} * -1);
+                left: calc((#{$archive-list-revied-spase-l} / 2) * -1);
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    &:not(.is-vertical) {
+      display: table;
+      border-collapse: collapse;
+
+      >* {
+        display: table-row;
+        width: auto;
+        box-shadow: none;
+        @include padding-y(0);
+        border-top: none;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        &.is-revied {
+          position: relative;
+          padding-left: 0;
+          width: auto;
+          transform: translateX($archive-list-revied-spase-l);
+
+          #{$archive-list-class-name} {
+
+            &__header,
+            &__body {}
+
+            &__header {
+              padding-right: $archive-list-header-padding-right;
+
+              &:first-child {
+                &::before {
+                  height: calc(#{$archive-list-y-padding-l} + ((1em * #{$archive-list-line-height}) / 2) + #{$archive-sticker-y-padding});
+
+                  top: 0;
+                }
+              }
+            }
+
+            &__body {
+              padding-right: $archive-list-revied-spase-l;
+
+              p {
+                display: block;
+                @include padding-y($archive-sticker-y-padding);
+                border: $archive-sticker-border;
+                border-color: transparent;
+              }
+            }
+          }
+        }
+
+        @if not $archive-list-top-border {
+          &:first-child {
+            border-top: none;
+          }
+        }
+
+      }
+
+      #{$archive-list-class-name} {
+
+        &__header,
+        &__body {
+          display: table-cell;
+
+          @if $archive-list-y-padding-s !=$archive-list-y-padding-l {
+            @include padding-y($archive-list-y-padding-l);
+          }
+
+          border-top: $archive-list-divid-border;
+        }
+
+        &__header {
+          width: 1%;
+          vertical-align: top;
+
+          &.is-header-end {
+            padding-right: $archive-list-header-padding-right;
+          }
+        }
+
+        &__body {
+          vertical-align: middle;
+          width: auto;
+        }
+      }
+
+    }
+
+  }
+}
+
+#{$archive-time-class-name},
+#{$archive-sticker-class-name} {
+  display: block;
+  @include padding-y($archive-sticker-y-padding);
+  border: $archive-sticker-border;
+}
+
+#{$archive-time-class-name} {
+  font-size: $archive-time-font-size;
+  color: $archive-time-color;
+  border-color: transparent;
+}
+
+#{$archive-sticker-class-name} {
+  font-size: $archive-sticker-font-size;
+  color: $archive-sticker-color;
+  white-space: nowrap;
+  background-color: $archive-sticker-bg-color;
+  line-height: $archive-sticker-line-height;
+  text-align: center;
+  border-radius: $archive-sticker-border-radius;
+  width: 100%;
+  min-width: $archive-sticker-min-width;
+  @include padding-x($archive-sticker-x-padding);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style template
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$archive-list-class-name} {
+  a {
+    &:hover {}
+  }
+
+  >* {
+    &.is-revied {
+      #{$archive-list-class-name} {
+        &__header {
+          &:first-child {
+            &::before {}
+          }
+        }
+      }
+    }
+  }
+
+  &__header {}
+
+  &__body {}
+
+  @include media-min($archive-list-breakpoint) {
+    &:not(.is-vertical) {
+      >* {
+
+        &.is-revied {
+
+          #{$archive-list-class-name} {
+            &__header {
+              &:first-child {
+                &::before {}
+
+              }
+            }
+
+            &__body {}
+          }
+        }
+      }
+
+      #{$archive-list-class-name} {
+
+        &__header {}
+
+        &__body {}
+      }
+    }
+  }
+}

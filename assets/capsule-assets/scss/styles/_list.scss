@@ -1,0 +1,50 @@
+@charset 'UTF-8';
+/* ========================================================
+  List style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$list-margin: 1.5em !default;
+
+$default-list-type: circle,
+disc,
+square,
+decimal,
+decimal-zero,
+lower-roman,
+upper-roman,
+lower-alpha,
+upper-alpha,
+cjk-ideographic,
+hiragana,
+hiragana-iroha,
+katakana,
+katakana-iroha,
+none !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+%default-list-style {
+  margin-left: $list-margin;
+  list-style-position: outside;
+  text-indent: 0;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+ol,
+ul {
+  @each $type in $default-list-type {
+    &.list-#{$type} {
+      @extend %default-list-style;
+
+      >li {
+        list-style-type: $type;
+      }
+    }
+  }
+}

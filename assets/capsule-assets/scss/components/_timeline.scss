@@ -1,0 +1,396 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Timeline style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Base */
+$timeline-class-name:'.timeline' !default;
+$timeline-breakpoint: 768px !default;
+
+/* style */
+$timeline-line-height: 1.25 !default; // 'inherit' 禁止
+
+$timeline-dot-size-s: 6px !default;
+$timeline-dot-size-l: 8px !default;
+
+$timeline-dot-color: #000 !default;
+$timeline-date-color: #F00 !default;
+
+$timeline-border-style: solid 1px #d4d9dd !default;
+$timeline-top-border-style: $timeline-border-style !default;
+$timeline-bottom-border-style: $timeline-border-style !default;
+$timeline-line-border-style: $timeline-border-style !default;
+
+$timeline-top-bottom-border-show: false !default;
+
+
+$timeline-text-padding: 0.5em !default;
+
+$timeline-side-padding-s: 16px !default;
+$timeline-side-padding-l: 64px !default;
+
+$timeline-y-padding-s: 16px !default;
+$timeline-y-padding-l: 16px !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Base
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$timeline-class-name} {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+
+  @if $timeline-top-bottom-border-show {
+    border-top: $timeline-top-border-style;
+    border-bottom: $timeline-bottom-border-style;
+  }
+
+  line-height: $timeline-line-height;
+
+  *+*,
+  li+li {
+    margin-top: 0;
+  }
+
+  >* {
+    display: block;
+    position: relative;
+    margin-top: 0;
+
+    @if $timeline-top-bottom-border-show {
+      &:first-child {
+        #{$timeline-class-name} {
+          &__header {
+            padding-top: calc(#{$timeline-y-padding-s} * 2);
+
+            &::after {
+              top: calc((#{$timeline-y-padding-s} * 2) + ((1.0em * #{$timeline-line-height}) / 2));
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        #{$timeline-class-name} {
+          &__body {
+            padding-bottom: calc(#{$timeline-y-padding-s} * 2);
+          }
+        }
+      }
+    }
+
+    @else {
+      &:first-child {
+        #{$timeline-class-name} {
+          &__header {
+
+            &::before {
+              top: calc(#{$timeline-y-padding-s} + (1.0em * #{$timeline-line-height}) / 2);
+              height: calc(100% - (#{$timeline-y-padding-s} + ((1.0em * #{$timeline-line-height}) / 2)));
+            }
+
+            &::after {
+              top: calc(#{$timeline-y-padding-s} + (1.0em * #{$timeline-line-height}) / 2);
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        #{$timeline-class-name} {
+          &__header {
+            &::before {
+              height: calc(#{$timeline-y-padding-s} + ((1.0em * #{$timeline-line-height}) / 2));
+            }
+          }
+
+          &__body {
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  &__header,
+  &__body {
+    display: block;
+    position: relative;
+    padding-left: calc(#{$timeline-side-padding-s} + #{$timeline-text-padding});
+
+    &::before,
+    &::after {
+      display: block;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      content: '';
+    }
+
+    &::before {
+      top: 0;
+      left: calc(#{$timeline-side-padding-s} / 2);
+      height: 100%;
+      border-left: $timeline-border-style;
+    }
+  }
+
+  &__header {
+    color: $timeline-date-color;
+    padding-top: $timeline-y-padding-s;
+
+    &::after {
+
+      @include size($timeline-dot-size-s);
+      border-radius: 50%;
+      background-color: $timeline-dot-color;
+      z-index: 5;
+
+      top: calc(#{$timeline-y-padding-s} + ((1.0em * #{$timeline-line-height}) / 2));
+      left: calc(#{$timeline-side-padding-s} / 2);
+
+      margin-top: calc((#{$timeline-dot-size-s} / 2) * -1);
+      margin-left: calc((#{$timeline-dot-size-s} / 2) * -1);
+    }
+  }
+
+  &__body {
+    display: block;
+    margin: 0;
+    padding-top: $timeline-text-padding;
+    padding-bottom: $timeline-y-padding-s;
+  }
+
+  @include media-min($timeline-breakpoint) {
+
+    display: table;
+
+    >* {
+      display: table-row;
+
+      @if $timeline-top-bottom-border-show {
+        &:first-child {
+          #{$timeline-class-name} {
+
+            &__header,
+            &__body {
+              padding-top: calc(#{$timeline-y-padding-l} * 2);
+
+              &::before,
+              &::after {}
+
+              &::before {
+                top: calc((#{$timeline-y-padding-l} * 2) + ((1.0em * #{$timeline-line-height}) / 2));
+              }
+            }
+
+            &__header {
+
+              &::after {
+                top: calc((#{$timeline-y-padding-l} * 2) + ((1.0em * #{$timeline-line-height}) / 2));
+              }
+            }
+
+            &__body {}
+          }
+        }
+
+        &:last-child {
+          #{$timeline-class-name} {
+
+            &__header,
+            &__body {
+              padding-bottom: calc(#{$timeline-y-padding-l} * 2);
+
+              &::before,
+              &::after {}
+
+              &::before {}
+            }
+
+            &__header {
+
+              &::after {}
+            }
+
+            &__body {}
+          }
+
+        }
+      }
+
+      @else {
+        &:first-child {
+          #{$timeline-class-name} {
+
+            &__header,
+            &__body {
+              &::before {
+                top: calc(#{$timeline-y-padding-l} + (1.0em * #{$timeline-line-height}) / 2);
+                height: auto;
+              }
+            }
+
+            &__header {
+
+              &::after {
+                top: calc(#{$timeline-y-padding-l} + (1.0em * #{$timeline-line-height}) / 2);
+              }
+            }
+
+            &__body {
+
+              &::after {
+                top: calc(#{$timeline-y-padding-l} + (1.0em * #{$timeline-line-height}) / 2);
+              }
+            }
+          }
+        }
+
+        &:last-child {
+          #{$timeline-class-name} {
+
+            &__header,
+            &__body {
+
+              &::before {
+                display: block;
+                height: auto;
+              }
+            }
+
+            &__body {
+              &::after {
+                height: calc(#{$timeline-y-padding-l} + ((1.0em * #{$timeline-line-height}) / 2));
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    &__header,
+    &__body {
+      display: table-cell;
+      vertical-align: top;
+      @include padding-y($timeline-y-padding-l);
+
+      &::before,
+      &::after {}
+
+      &::before {
+        height: 0;
+        width: calc(#{$timeline-side-padding-l} / 2);
+        border-top: $timeline-line-border-style;
+        top: calc(#{$timeline-y-padding-l} + ((1.0em * #{$timeline-line-height}) / 2));
+      }
+    }
+
+    &__header {
+
+      width: 1%;
+      white-space: nowrap;
+
+      padding-right: calc(#{$timeline-side-padding-l / 2} + #{$timeline-text-padding});
+      padding-left: 0;
+
+      &::before {
+        left: auto;
+        right: 0;
+      }
+
+      &::after {
+        @include size($timeline-dot-size-l);
+
+        top: calc(#{$timeline-y-padding-l} + ((1.0em * #{$timeline-line-height}) / 2));
+        left: auto;
+        right: 0;
+        margin-top: calc((#{$timeline-dot-size-l}/ 2) * -1);
+        margin-left: 0;
+        margin-right: calc((#{$timeline-dot-size-l }/ 2) * -1);
+      }
+    }
+
+    &__body {
+      padding-left: calc(#{$timeline-side-padding-l / 2} + #{$timeline-text-padding});
+
+      &::before {
+        left: 0;
+        right: auto;
+      }
+
+      &::after {
+        top: 0;
+        left: 0;
+        height: 100%;
+        border-left: $timeline-border-style;
+      }
+
+    }
+
+  }
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style template
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$timeline-class-name} {
+
+  >* {}
+
+  &__header,
+  &__body {
+
+    &::before,
+    &::after {}
+
+    &::before {}
+  }
+
+  &__header {
+
+    &::after {}
+  }
+
+  &__body {}
+
+  @include media-min($timeline-breakpoint) {
+
+    >* {}
+
+
+    &__header,
+    &__body {
+
+      &::before,
+      &::after {}
+
+      &::before {}
+    }
+
+    &__header {
+
+      &::before {}
+
+      &::after {}
+    }
+
+    &__body {
+      &::before {}
+
+      &::after {}
+
+    }
+
+
+
+  }
+}

@@ -1,0 +1,419 @@
+@charset 'UTF-8';
+/* ========================================================
+  Base Colors Variation
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Related variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$colors-pallet: () !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Base Colors Default
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Monochrome */
+$white: #fff !default;
+$black: #000 !default;
+$color-gray: #adb5bd !default;
+
+/* Colors */
+$color-blue: #0d6efd !default;
+$color-indigo: #6610f2 !default;
+$color-purple: #6f42c1 !default;
+$color-pink: #d63384 !default;
+$color-red: #dc3545 !default;
+$color-orange: #fd7e14 !default;
+$color-yellow: #ffc107 !default;
+$color-green: #28a745 !default;
+$color-teal: #20c997 !default;
+$color-cyan: #17a2b8 !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  base color array
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+$colors-base: (
+  /* array */
+  'gray': $color-gray,
+  'blue': $color-blue,
+  'indigo': $color-indigo,
+  'purple': $color-purple,
+  'pink': $color-pink,
+  'red': $color-red,
+  'orange': $color-orange,
+  'yellow': $color-yellow,
+  'green': $color-green,
+  'teal': $color-teal,
+  'cyan': $color-cyan
+  /* array */
+);
+
+@function colors-base($key) {
+  @return map-get($colors-base, $key);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color gray
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-gray-100: color-tone($color-gray, 10);
+$color-gray-200: color-tone($color-gray, 8);
+$color-gray-300: color-tone($color-gray, 6);
+$color-gray-400: color-tone($color-gray, 3);
+$color-gray-500: color-tone($color-gray, 0);
+$color-gray-600: color-tone($color-gray, -3);
+$color-gray-700: color-tone($color-gray, -6);
+$color-gray-800: color-tone($color-gray, -8);
+$color-gray-900: color-tone($color-gray, -10);
+
+$colors-gray: (
+  /* array */
+  '100': $color-gray-100,
+  '200': $color-gray-200,
+  '300': $color-gray-300,
+  '400': $color-gray-400,
+  '500': $color-gray-500,
+  '600': $color-gray-600,
+  '700': $color-gray-700,
+  '800': $color-gray-800,
+  '900': $color-gray-900
+  /* array */
+) !default;
+
+@function colors-gray($key) {
+  @return map-get($colors-gray, $key);
+}
+
+$colors-pallet: colors-pallet-set('gray', $colors-gray);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color blue
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-blue-100: color-tone($color-blue, 10);
+$color-blue-200: color-tone($color-blue, 8);
+$color-blue-300: color-tone($color-blue, 6);
+$color-blue-400: color-tone($color-blue, 3);
+$color-blue-500: color-tone($color-blue, 0);
+$color-blue-600: color-tone($color-blue, -3);
+$color-blue-700: color-tone($color-blue, -6);
+$color-blue-800: color-tone($color-blue, -8);
+$color-blue-900: color-tone($color-blue, -10);
+
+$colors-blue: (
+  /* array */
+  '100': $color-blue-100,
+  '200': $color-blue-200,
+  '300': $color-blue-300,
+  '400': $color-blue-400,
+  '500': $color-blue-500,
+  '600': $color-blue-600,
+  '700': $color-blue-700,
+  '800': $color-blue-800,
+  '900': $color-blue-900
+  /* array */
+) !default;
+
+@function colors-blue($key) {
+  @return map-get($colors-blue, $key);
+}
+
+$colors-pallet: colors-pallet-set('blue', $colors-blue);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color indigo
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-indigo-100: color-tone($color-indigo, 10);
+$color-indigo-200: color-tone($color-indigo, 8);
+$color-indigo-300: color-tone($color-indigo, 6);
+$color-indigo-400: color-tone($color-indigo, 3);
+$color-indigo-500: color-tone($color-indigo, 0);
+$color-indigo-600: color-tone($color-indigo, -3);
+$color-indigo-700: color-tone($color-indigo, -6);
+$color-indigo-800: color-tone($color-indigo, -8);
+$color-indigo-900: color-tone($color-indigo, -10);
+
+$colors-indigo: (
+  /* array */
+  '100': $color-indigo-100,
+  '200': $color-indigo-200,
+  '300': $color-indigo-300,
+  '400': $color-indigo-400,
+  '500': $color-indigo-500,
+  '600': $color-indigo-600,
+  '700': $color-indigo-700,
+  '800': $color-indigo-800,
+  '900': $color-indigo-900
+  /* array */
+) !default;
+
+
+@function colors-indigo($key) {
+  @return map-get($colors-indigo, $key);
+}
+
+$colors-pallet: colors-pallet-set('indigo', $colors-indigo);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color purple
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-purple-100: color-tone($color-purple, 10);
+$color-purple-200: color-tone($color-purple, 8);
+$color-purple-300: color-tone($color-purple, 6);
+$color-purple-400: color-tone($color-purple, 3);
+$color-purple-500: color-tone($color-purple, 0);
+$color-purple-600: color-tone($color-purple, -3);
+$color-purple-700: color-tone($color-purple, -6);
+$color-purple-800: color-tone($color-purple, -8);
+$color-purple-900: color-tone($color-purple, -10);
+
+$colors-purple: (
+  /* array */
+  '100': $color-purple-100,
+  '200': $color-purple-200,
+  '300': $color-purple-300,
+  '400': $color-purple-400,
+  '500': $color-purple-500,
+  '600': $color-purple-600,
+  '700': $color-purple-700,
+  '800': $color-purple-800,
+  '900': $color-purple-900
+  /* array */
+) !default;
+
+@function colors-purple($key) {
+  @return map-get($colors-purple, $key);
+}
+
+$colors-pallet: colors-pallet-set('purple', $colors-purple);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color pink
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-pink-100: color-tone($color-pink, 10);
+$color-pink-200: color-tone($color-pink, 8);
+$color-pink-300: color-tone($color-pink, 6);
+$color-pink-400: color-tone($color-pink, 3);
+$color-pink-500: color-tone($color-pink, 0);
+$color-pink-600: color-tone($color-pink, -3);
+$color-pink-700: color-tone($color-pink, -6);
+$color-pink-800: color-tone($color-pink, -8);
+$color-pink-900: color-tone($color-pink, -10);
+
+$colors-pink: (
+  /* array */
+  '100': $color-pink-100,
+  '200': $color-pink-200,
+  '300': $color-pink-300,
+  '400': $color-pink-400,
+  '500': $color-pink-500,
+  '600': $color-pink-600,
+  '700': $color-pink-700,
+  '800': $color-pink-800,
+  '900': $color-pink-900
+  /* array */
+) !default;
+
+@function colors-pink($key) {
+  @return map-get($colors-pink, $key);
+}
+
+$colors-pallet: colors-pallet-set('pink', $colors-pink);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color red
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-red-100: color-tone($color-red, 10);
+$color-red-200: color-tone($color-red, 8);
+$color-red-300: color-tone($color-red, 6);
+$color-red-400: color-tone($color-red, 3);
+$color-red-500: color-tone($color-red, 0);
+$color-red-600: color-tone($color-red, -3);
+$color-red-700: color-tone($color-red, -6);
+$color-red-800: color-tone($color-red, -8);
+$color-red-900: color-tone($color-red, -10);
+
+$colors-red: (
+  /* array */
+  '100': $color-red-100,
+  '200': $color-red-200,
+  '300': $color-red-300,
+  '400': $color-red-400,
+  '500': $color-red-500,
+  '600': $color-red-600,
+  '700': $color-red-700,
+  '800': $color-red-800,
+  '900': $color-red-900
+  /* array */
+) !default;
+
+@function colors-red($key) {
+  @return map-get($colors-red, $key);
+}
+
+$colors-pallet: colors-pallet-set('red', $colors-red);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color orange
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-orange-100: color-tone($color-orange, 10);
+$color-orange-200: color-tone($color-orange, 8);
+$color-orange-300: color-tone($color-orange, 6);
+$color-orange-400: color-tone($color-orange, 3);
+$color-orange-500: color-tone($color-orange, 0);
+$color-orange-600: color-tone($color-orange, -3);
+$color-orange-700: color-tone($color-orange, -6);
+$color-orange-800: color-tone($color-orange, -8);
+$color-orange-900: color-tone($color-orange, -10);
+
+$colors-orange: (
+  /* array */
+  '100': $color-orange-100,
+  '200': $color-orange-200,
+  '300': $color-orange-300,
+  '400': $color-orange-400,
+  '500': $color-orange-500,
+  '600': $color-orange-600,
+  '700': $color-orange-700,
+  '800': $color-orange-800,
+  '900': $color-orange-900
+  /* array */
+) !default;
+
+@function colors-orange($key) {
+  @return map-get($colors-orange, $key);
+}
+
+$colors-pallet: colors-pallet-set('orange', $colors-orange);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color yellow
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-yellow-100: color-tone($color-yellow, 10);
+$color-yellow-200: color-tone($color-yellow, 8);
+$color-yellow-300: color-tone($color-yellow, 6);
+$color-yellow-400: color-tone($color-yellow, 3);
+$color-yellow-500: color-tone($color-yellow, 0);
+$color-yellow-600: color-tone($color-yellow, -3);
+$color-yellow-700: color-tone($color-yellow, -6);
+$color-yellow-800: color-tone($color-yellow, -8);
+$color-yellow-900: color-tone($color-yellow, -10);
+
+$colors-yellow: (
+  /* array */
+  '100': $color-yellow-100,
+  '200': $color-yellow-200,
+  '300': $color-yellow-300,
+  '400': $color-yellow-400,
+  '500': $color-yellow-500,
+  '600': $color-yellow-600,
+  '700': $color-yellow-700,
+  '800': $color-yellow-800,
+  '900': $color-yellow-900
+  /* array */
+) !default;
+
+@function colors-yellow($key) {
+  @return map-get($colors-yellow, $key);
+}
+
+$colors-pallet: colors-pallet-set('yellow', $colors-yellow);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color green
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+$color-green-100: color-tone($color-green, 10);
+$color-green-200: color-tone($color-green, 8);
+$color-green-300: color-tone($color-green, 6);
+$color-green-400: color-tone($color-green, 3);
+$color-green-500: color-tone($color-green, 0);
+$color-green-600: color-tone($color-green, -3);
+$color-green-700: color-tone($color-green, -6);
+$color-green-800: color-tone($color-green, -8);
+$color-green-900: color-tone($color-green, -10);
+
+$colors-green: (
+  /* array */
+  '100': $color-green-100,
+  '200': $color-green-200,
+  '300': $color-green-300,
+  '400': $color-green-400,
+  '500': $color-green-500,
+  '600': $color-green-600,
+  '700': $color-green-700,
+  '800': $color-green-800,
+  '900': $color-green-900
+  /* array */
+) !default;
+
+@function colors-green($key) {
+  @return map-get($colors-green, $key);
+}
+
+$colors-pallet: colors-pallet-set('green', $colors-green);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color teal
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-teal-100: color-tone($color-teal, 10);
+$color-teal-200: color-tone($color-teal, 8);
+$color-teal-300: color-tone($color-teal, 6);
+$color-teal-400: color-tone($color-teal, 3);
+$color-teal-500: color-tone($color-teal, 0);
+$color-teal-600: color-tone($color-teal, -3);
+$color-teal-700: color-tone($color-teal, -6);
+$color-teal-800: color-tone($color-teal, -8);
+$color-teal-900: color-tone($color-teal, -10);
+
+$colors-teal: (
+  /* array */
+  '100': $color-teal-100,
+  '200': $color-teal-200,
+  '300': $color-teal-300,
+  '400': $color-teal-400,
+  '500': $color-teal-500,
+  '600': $color-teal-600,
+  '700': $color-teal-700,
+  '800': $color-teal-800,
+  '900': $color-teal-900
+  /* array */
+) !default;
+
+@function colors-teal($key) {
+  @return map-get($colors-teal, $key);
+}
+
+$colors-pallet: colors-pallet-set('teal', $colors-teal);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color cyan
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-cyan-100: color-tone($color-cyan, 10);
+$color-cyan-200: color-tone($color-cyan, 8);
+$color-cyan-300: color-tone($color-cyan, 6);
+$color-cyan-400: color-tone($color-cyan, 3);
+$color-cyan-500: color-tone($color-cyan, 0);
+$color-cyan-600: color-tone($color-cyan, -3);
+$color-cyan-700: color-tone($color-cyan, -6);
+$color-cyan-800: color-tone($color-cyan, -8);
+$color-cyan-900: color-tone($color-cyan, -10);
+
+$colors-cyan: (
+  /* array */
+  '100': $color-cyan-100,
+  '200': $color-cyan-200,
+  '300': $color-cyan-300,
+  '400': $color-cyan-400,
+  '500': $color-cyan-500,
+  '600': $color-cyan-600,
+  '700': $color-cyan-700,
+  '800': $color-cyan-800,
+  '900': $color-cyan-900
+  /* array */
+) !default;
+
+@function colors-cyan($key) {
+  @return map-get($colors-cyan, $key);
+}
+
+$colors-pallet: colors-pallet-set('cyan', $colors-cyan);

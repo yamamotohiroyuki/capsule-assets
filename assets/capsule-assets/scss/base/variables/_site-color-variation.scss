@@ -1,0 +1,135 @@
+@charset 'UTF-8';
+/* ========================================================
+  Site Colors Variation
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Related variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$colors-pallet: () !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Site Colors Default
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* リンク */
+$color-link: #e51b5e !default;
+/* アクセント */
+$color-accent: #e51b5e !default;
+/* 強調 */
+$color-emphasis: #e51b5e !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  colors 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$site-colors: (
+  /* array */
+  link: $color-link,
+  accent: $color-accent,
+  emphasis: $color-emphasis,
+  /* array */
+);
+
+@function site-colors($key) {
+  @return map-get($site-colors, $key);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color link
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-link-100: color-tone($color-link, 10);
+$color-link-200: color-tone($color-link, 8);
+$color-link-300: color-tone($color-link, 6);
+$color-link-400: color-tone($color-link, 3);
+$color-link-500: color-tone($color-link, 0);
+$color-link-600: color-tone($color-link, -3);
+$color-link-700: color-tone($color-link, -6);
+$color-link-800: color-tone($color-link, -8);
+$color-link-900: color-tone($color-link, -10);
+
+$colors-link: (
+  /* array */
+  '100': $color-link-100,
+  '200': $color-link-200,
+  '300': $color-link-300,
+  '400': $color-link-400,
+  '500': $color-link-500,
+  '600': $color-link-600,
+  '700': $color-link-700,
+  '800': $color-link-800,
+  '900': $color-link-900
+  /* array */
+);
+
+@function colors-link($key) {
+  @return map-get($colors-link, $key);
+}
+
+$colors-pallet: colors-pallet-set('link', $colors-link);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color accent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-accent-100: color-tone($color-accent, 10);
+$color-accent-200: color-tone($color-accent, 8);
+$color-accent-300: color-tone($color-accent, 6);
+$color-accent-400: color-tone($color-accent, 3);
+$color-accent-500: color-tone($color-accent, 0);
+$color-accent-600: color-tone($color-accent, -3);
+$color-accent-700: color-tone($color-accent, -6);
+$color-accent-800: color-tone($color-accent, -8);
+$color-accent-900: color-tone($color-accent, -10);
+
+$colors-accent: (
+  /* array */
+  '100': $color-accent-100,
+  '200': $color-accent-200,
+  '300': $color-accent-300,
+  '400': $color-accent-400,
+  '500': $color-accent-500,
+  '600': $color-accent-600,
+  '700': $color-accent-700,
+  '800': $color-accent-800,
+  '900': $color-accent-900
+  /* array */
+);
+
+@function colors-accent($key) {
+  @return map-get($colors-accent, $key);
+}
+
+$colors-pallet: colors-pallet-set('accent', $colors-accent);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color emphasis
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-emphasis-100: color-tone($color-emphasis, 10);
+$color-emphasis-200: color-tone($color-emphasis, 8);
+$color-emphasis-300: color-tone($color-emphasis, 6);
+$color-emphasis-400: color-tone($color-emphasis, 3);
+$color-emphasis-500: color-tone($color-emphasis, 0);
+$color-emphasis-600: color-tone($color-emphasis, -3);
+$color-emphasis-700: color-tone($color-emphasis, -6);
+$color-emphasis-800: color-tone($color-emphasis, -8);
+$color-emphasis-900: color-tone($color-emphasis, -10);
+
+$colors-emphasis: (
+  /* array */
+  '100': $color-emphasis-100,
+  '200': $color-emphasis-200,
+  '300': $color-emphasis-300,
+  '400': $color-emphasis-400,
+  '500': $color-emphasis-500,
+  '600': $color-emphasis-600,
+  '700': $color-emphasis-700,
+  '800': $color-emphasis-800,
+  '900': $color-emphasis-900
+  /* array */
+);
+
+@function colors-emphasis($key) {
+  @return map-get($colors-emphasis, $key);
+}
+
+$colors-pallet: colors-pallet-set('emphasis', $colors-emphasis);

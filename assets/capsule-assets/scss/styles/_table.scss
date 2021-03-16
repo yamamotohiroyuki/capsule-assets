@@ -1,0 +1,383 @@
+@charset 'UTF-8';
+/* ========================================================
+  Table
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$contents-style-name: '.contents-style' !default;
+
+$table-breakpoint: 768px !default;
+
+$table-padding-y: 1.0em !default;
+$table-padding-x: 1.0em !default;
+$table-narrow-padding-y: 0.5em !default;
+$table-narrow-padding-x: 0.5em !default;
+
+$table-padding-y: 1.0em !default;
+
+$table-border-style: solid 1px #d4d9dd !default;
+
+/* caption */
+$table-caption-padding-y: 0.25em !default;
+$table-caption-padding-x: 0 !default;
+$table-caption-font-size: 0.875em !default;
+$table-caption-align: left !default;
+$table-caption-color: inherit !default;
+$table-caption-bg-color: #eee !default;
+
+/* thead th */
+$table-thead-th-color: inherit !default;
+$table-thead-th-bg-color:#ddd !default;
+/* thead td */
+$table-thead-td-color: inherit !default;
+$table-thead-td-bg-color:#eee !default;
+
+/* tbody th */
+$table-tbody-th-color: inherit !default;
+$table-tbody-th-bg-color:#eee !default;
+/* tbody td */
+$table-tbody-td-color: inherit !default;
+$table-tbody-td-bg-color:inherit !default;
+
+/* tfoot th */
+$table-tfoot-th-color:inherit !default;
+$table-tfoot-th-bg-color:#ddd !default;
+/* tfoot td */
+$table-tfoot-td-color: inherit !default;
+$table-tfoot-td-bg-color:#eee !default;
+
+
+$table-stripe-odd-th: inherit !default;
+$table-stripe-odd-td: inherit !default;
+$table-stripe-even-th: #ddd !default;
+$table-stripe-even-td: #eee !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Table
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+table {
+  &.is-layout-fixed {
+    table-layout: fixed;
+  }
+
+  &.is-narrow,
+  .is-narrow {
+
+    th,
+    td {
+      padding: $table-narrow-padding-y $table-narrow-padding-x;
+    }
+  }
+
+
+  caption {
+    text-align: $table-caption-align;
+    padding: $table-caption-padding-y $table-caption-padding-x;
+  }
+
+  colgroup {}
+
+  col {}
+
+  th,
+  td {
+    &.is-fit {
+      width: 1%;
+      white-space: nowrap;
+    }
+
+  }
+
+  &.is-responsive {
+    display: block;
+
+
+    &.is-layout-fixed {
+      table-layout: auto;
+    }
+
+    colgroup {}
+
+    col {}
+
+
+    caption,
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    th,
+    td {
+      &.is-fit {
+        width: auto;
+        white-space: normal;
+      }
+    }
+
+    @include media-min($table-breakpoint) {
+      display: table;
+
+      &.is-layout-fixed {
+        table-layout: fixed;
+      }
+
+      colgroup {
+        display: table-column-group;
+
+        &.is-fit {
+          col {
+            width: 1%;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      col {
+        display: table-column;
+
+        &.is-fit {
+          width: 1%;
+          white-space: nowrap;
+        }
+      }
+
+      caption {
+        display: table-caption;
+      }
+
+      thead {
+        display: table-header-group;
+      }
+
+      tbody {
+        display: table-row-group;
+      }
+
+      tfoot {
+        display: table-footer-group;
+      }
+
+      tr {
+        display: table-row;
+      }
+
+      th,
+      td {
+        display: table-cell;
+
+        &.is-fit {
+          width: 1%;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+%table {
+  width: 100%;
+
+  caption {
+    padding: $table-caption-padding-y $table-caption-padding-x;
+    color: $table-caption-color;
+    background-color: $table-caption-bg-color;
+    font-size: $table-caption-font-size;
+  }
+
+  th,
+  td {
+    padding: $table-padding-y $table-padding-x;
+  }
+
+  th {
+    color: $table-tbody-th-color;
+    background-color: $table-tbody-th-bg-color;
+  }
+
+  td {
+    color: $table-tbody-td-color;
+    background-color: $table-tbody-td-bg-color;
+  }
+
+  thead {
+
+    th,
+    td {}
+
+    th {
+      color: $table-thead-th-color;
+      background-color: $table-thead-th-bg-color;
+    }
+
+    td {
+      color: $table-thead-td-color;
+      background-color: $table-thead-td-bg-color;
+    }
+  }
+
+  tbody {
+
+    th,
+    td {}
+
+    th {}
+
+    td {}
+  }
+
+  tfoot {
+
+    th,
+    td {}
+
+    th {
+      color: $table-tfoot-th-color;
+      background-color: $table-tfoot-th-bg-color;
+    }
+
+    td {
+      color: $table-tfoot-td-color;
+      background-color: $table-tfoot-td-bg-color;
+    }
+  }
+
+}
+
+%table-border {
+  @extend %table;
+  border-bottom: $table-border-style;
+
+  th,
+  td {
+    border: $table-border-style;
+  }
+
+  &.is-responsive {
+
+    th,
+    td {
+      border-bottom: none;
+    }
+
+    @include media-min($table-breakpoint) {
+
+      th,
+      td {
+        border-top: $table-border-style;
+      }
+    }
+  }
+
+}
+
+%table-under-border {
+  @extend %table;
+  border-bottom: $table-border-style;
+
+  th,
+  td {
+    border-top: $table-border-style;
+  }
+
+}
+
+%table-stripe {
+  @extend %table;
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        @if $table-stripe-odd-th !=inherit {
+          th {
+            background-color: $table-stripe-odd-th;
+          }
+        }
+
+        @if $table-stripe-odd-td !=inherit {
+          td {
+            background-color: $table-stripe-odd-td;
+          }
+
+        }
+      }
+
+      &:nth-child(even) {
+        @if $table-stripe-even-th !=inherit {
+
+          th {
+            background-color: $table-stripe-even-th;
+          }
+
+        }
+
+        @if $table-stripe-even-td !=inherit {
+
+          td {
+            background-color: $table-stripe-even-td;
+          }
+
+
+        }
+      }
+    }
+  }
+}
+
+%table-border-stripe {
+  @extend %table-border;
+  @extend %table-stripe;
+}
+
+%table-under-border-stripe {
+  @extend %table-under-border;
+  @extend %table-stripe;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$contents-style-name} {
+  table {
+
+    *+*,
+    li+li {
+      margin-top: 0;
+    }
+  }
+}
+
+.table {
+  @extend %table;
+}
+
+.table-border {
+  @extend %table-border;
+}
+
+.table-under-border {
+  @extend %table-under-border;
+}
+
+.table-stripe {
+  @extend %table-stripe;
+}
+
+.table-border-stripe {
+  @extend %table-border-stripe;
+}
+
+.table-under-border-stripe {
+  @extend %table-under-border-stripe;
+}

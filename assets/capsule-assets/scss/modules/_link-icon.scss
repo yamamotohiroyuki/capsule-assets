@@ -1,0 +1,217 @@
+@charset 'UTF-8';
+/* ========================================================
+  Link icon style
+======================================================== */
+@import '../../icon/scss/basic-icon-variables';
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$link-icon-margin: 0.25em !default;
+/* Blank */
+$link-icon-blank-icon: $bi-blank_line !default;
+$link-icon-blank-color: inherit !default;
+
+/* PDF */
+$link-icon-pdf-icon: $bi-document_file-pdf-border !default;
+$link-icon-pdf-color: #f72702 !default;
+
+/* xls */
+$link-icon-xls-icon: $bi-document_file-excel-border !default;
+$link-icon-xls-color: #10753c !default;
+
+/* zip */
+$link-icon-zip-icon: $bi-document_file-zip-border !default;
+$link-icon-zip-color: #518ba1 !default;
+
+/* arrow */
+$link-icon-arrow-icon: $bi-arrow_right !default;
+$link-icon-arrow-back-icon: $bi-arrow_left !default;
+$link-icon-arrow-color: inherit !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+%link-icon {
+
+  &::before,
+  &::after {
+    display: inline-block;
+    @include basic-icon();
+    position: relative;
+  }
+
+  &::before {
+    margin-right: $link-icon-margin;
+  }
+
+  &::after {
+    margin-left: $link-icon-margin;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  mixin
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin link-icon-blank {
+  content: bi-content($link-icon-blank-icon);
+  color: $link-icon-blank-color;
+}
+
+@mixin link-icon-pdf {
+  content: bi-content($link-icon-pdf-icon);
+  color: $link-icon-pdf-color;
+}
+
+@mixin link-icon-xls {
+  content: bi-content($link-icon-xls-icon);
+  color: $link-icon-xls-color;
+}
+
+@mixin link-icon-zip {
+  content: bi-content($link-icon-zip-icon);
+  color: $link-icon-zip-color;
+}
+
+@mixin link-icon-arrow {
+  content: bi-content($link-icon-arrow-icon);
+  color: $link-icon-arrow-color;
+}
+
+@mixin link-icon-arrow-back {
+  content: bi-content($link-icon-arrow-back-icon);
+  color: $link-icon-arrow-color;
+}
+
+
+/* Blank */
+a[target="_blank"].link-icon,
+.link-icon-blank {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-blank;
+  }
+}
+
+a[target="_blank"].link-icon-before,
+.link-icon-before-blank {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-blank;
+  }
+}
+
+/* PDF */
+a[href$=".pdf"].link-icon,
+.link-icon-pdf {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-pdf;
+  }
+}
+
+a[href$=".pdf"].link-icon-before,
+.link-icon-before-pdf {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-pdf;
+  }
+}
+
+/* Excel */
+a[href$=".xls"].link-icon,
+a[href$=".xlsx"].link-icon,
+.link-icon-xls {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-xls;
+  }
+}
+
+a[href$=".xls"].link-icon-before,
+a[href$=".xlsx"].link-icon-before,
+.link-icon-before-xls {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-xls;
+  }
+}
+
+/* ZIP */
+a[href$=".zip"].link-icon,
+.link-icon-zip {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-zip;
+  }
+}
+
+a[href$=".zip"].link-icon-before,
+.link-icon-before-zip {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-zip;
+  }
+}
+
+/* Arrow */
+.link-arrow {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-arrow;
+  }
+
+}
+
+.link-arrow-after {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-arrow;
+  }
+}
+
+.link-arrow-list {
+  line-height: 1.4;
+
+  li {
+    padding: 0.5rem;
+    @extend .link-arrow;
+    border-bottom: solid 1px $color-border;
+  }
+}
+
+.link-arrow-back {
+  @extend %link-icon;
+
+  &::before {
+    @include link-icon-arrow-back;
+  }
+
+}
+
+.link-arrow-back-after {
+  @extend %link-icon;
+
+  &::after {
+    @include link-icon-arrow-back;
+  }
+}
+
+.link-arrow-back-list {
+  line-height: 1.4;
+
+  li {
+    padding: 0.5rem;
+    @extend .link-arrow-back;
+    border-bottom: solid 1px $color-border;
+  }
+}

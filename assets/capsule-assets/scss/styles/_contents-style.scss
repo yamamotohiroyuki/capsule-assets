@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+/* ========================================================
+  Contents Style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Default Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$contents-style-name: '.contents-style' !default;
+$contents-style-font-size: 1.0em !default;
+$contents-style-line-height: 1.75 !default;
+/* owl margin top（相対推奨 em or % ）*/
+$owl-margin: 1.0em !default;
+/* owl li margin top（相対推奨 em or % ）*/
+$owl-li-margin: 0.5em !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$contents-style-name} {
+  font-size: $contents-style-font-size;
+  line-height: $contents-style-line-height;
+
+  *+* {
+    margin-top: $owl-margin;
+  }
+
+  li+li {
+    margin-top: $owl-li-margin;
+  }
+}

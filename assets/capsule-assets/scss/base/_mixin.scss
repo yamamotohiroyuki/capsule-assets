@@ -1,0 +1,283 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  MIXINS
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Font Size
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin font-size($size, $line: null, $base: $basic_font_size) {
+  //font-size: $size + px;
+  font-size: em-calc($size);
+
+  @if $line !=null {
+    line-height: line-height-calc($line, $size);
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Media Queries
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Media Queries width base */
+@mixin media($direction, $point) {
+  $max-negative: 0.02;
+  $calc: $point;
+
+  @if $direction==min {
+    $calc: breakpoint($point);
+  }
+
+  @else {
+    @if type-of($point)==number {
+      $calc: breakpoint($point) - $max-negative;
+
+    }
+
+    @else {
+      $calc: (breakpoint($point) - $max-negative);
+    }
+  }
+
+  @media (#{$direction}-width: $calc) {
+    @content;
+  }
+}
+
+/* Media Queries min */
+@mixin media-min($point: $default-breakpoint) {
+  @include media(min, $point) {
+    @content;
+  }
+}
+
+@mixin mobile-min() {
+  @include media-min($mobile-brakepoint) {
+    @content;
+  }
+}
+
+@mixin tablet-min() {
+  @include media-min($tablet-brakepoint) {
+    @content;
+  }
+}
+
+
+/* Media Queries max */
+@mixin media-max($point: $default-breakpoint) {
+  @include media(max, $point) {
+    @content;
+  }
+}
+
+@mixin mobile-max() {
+  @include media-max($mobile-brakepoint) {
+    @content;
+  }
+}
+
+@mixin tablet-max() {
+  @include media-max($tablet-brakepoint) {
+    @content;
+  }
+}
+
+/* Media Queries Only */
+@mixin media-only($min, $max) {
+  @media (min-width: breakpoint($min)) and (max-width: (breakpoint($max)-0.02px)) {
+    @content;
+  }
+}
+
+@mixin mobile-only() {
+  @include media-only(0, $mobile-brakepoint) {
+    @content;
+  }
+}
+
+@mixin tablet-only() {
+  @include media-only($mobile-brakepoint, $tablet-brakepoint) {
+    @content;
+  }
+}
+
+/* Media Dark Mode ダークモード用  */
+@mixin media-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+/* Media Portrait 画面が縦長用 */
+@mixin media-portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+/* Media Landscape 画面が横長用 */
+@mixin media-landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Form Reset
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin form-reset {
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+@mixin select-reset {
+  @include form-reset;
+  cursor: pointer;
+}
+
+@mixin form-submit-reset {
+  @include form-reset;
+  cursor: pointer;
+}
+
+
+/* Button Reset */
+@mixin button-reset {
+  @include form-reset;
+  cursor: pointer;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Size
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Background Cover
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin background-cover($image: null) {
+  @if $image {
+    background-image: url($image);
+  }
+
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Aspect Ratio
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin aspect-ratio($width, $height, $image-path: null) {
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: ($height / $width) * 100%;
+
+  @if $image-path !=null {
+    @include background-cover($image-path);
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Line Truncate
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin line-truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin lines-truncate($lines: 2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Justify
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Absolute
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin absolute($top:null, $right:null, $bottom:null, $left:null) {
+  position: absolute;
+
+  @if $top !=null {
+    top: $top;
+  }
+
+  @if $right !=null {
+    right: $right;
+  }
+
+  @if $bottom !=null {
+    bottom: $bottom;
+  }
+
+  @if $left !=null {
+    left: $left;
+  }
+
+  @if $top+$right+$bottom+$left==0 {
+    margin: auto;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Max Width
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin max-width($size: $max-width) {
+  display: block;
+  max-width: $size;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  margin & padding
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin margin($number: 0) {
+  margin: $number;
+}
+
+@mixin padding($number: 0) {
+  padding: $number;
+}
+
+@mixin margin-x($number: 0) {
+  margin-left: $number;
+  margin-right: $number;
+}
+
+@mixin padding-x($number: 0) {
+  padding-left: $number;
+  padding-right: $number;
+}
+
+@mixin margin-y($number: 0) {
+  margin-top: $number;
+  margin-bottom: $number;
+}
+
+@mixin padding-y($number: 0) {
+  padding-top: $number;
+  padding-bottom: $number;
+}

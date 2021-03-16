@@ -1,0 +1,169 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Tabs style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$tab-menu-brakepoint: 768px !default;
+
+$tab-menu-border: solid 1px #ddd !default;
+
+$tab-menu-gutter-s: 4px !default;
+$tab-menu-gutter-l: 8px !default;
+
+$tab-menu-split: (
+  /* array */
+  /* array */
+);
+
+.tab-menu-broaden {}
+
+.tab-menu-broaden {}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+%tab-menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc((#{$tab-menu-gutter-s} / 2) * -1);
+  margin-right: calc((#{$tab-menu-gutter-s} / 2) * -1);
+
+  li+li {
+    margin-top: 0;
+  }
+
+  li {
+    display: flex;
+    width: 50%;
+    padding: 4px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {}
+
+    &.is-active {}
+  }
+
+  @include media-min() {
+    flex-wrap: nowrap;
+    margin-left: 0;
+    margin-right: 0;
+
+
+    li {
+      display: flex;
+      padding: 0;
+      width: 100%;
+
+      +li {
+        margin-top: 0;
+        margin-left: $tab-menu-gutter-l;
+
+      }
+    }
+
+    a {
+
+      &:hover {}
+
+      &.is-active,
+      &.is-current {}
+
+    }
+
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.tab-menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+
+  li+li {
+    margin-top: 0;
+  }
+
+  li {
+    display: flex;
+    width: 50%;
+    padding: 8px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    background-color: #fff;
+    color: #000;
+    border: solid 1px #ddd;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+      border: solid 1px #ddd;
+    }
+
+    &.is-active,
+    &.is-current {
+      pointer-events: none;
+      background-color: #fff;
+      color: #000;
+      border: solid 1px #ddd;
+    }
+
+  }
+
+  @include media-min() {
+    flex-wrap: nowrap;
+    border-bottom: solid 1px #ddd;
+    margin-left: 0;
+    margin-right: 0;
+
+
+    li {
+      display: flex;
+      flex-grow: 1;
+      width: 100%;
+      padding: 0;
+
+      +li {
+        margin-top: 0;
+        margin-left: 1px;
+
+      }
+    }
+
+    a {
+      border-bottom: none;
+      border-radius: 2px 2px 0 0;
+
+      &:hover {
+        border-bottom: none;
+      }
+
+      &.is-active,
+      &.is-current {
+        border-bottom: none;
+      }
+
+    }
+
+
+  }
+}

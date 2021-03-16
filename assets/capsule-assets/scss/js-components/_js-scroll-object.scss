@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  JS Scroll Object
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@import '../../icon/scss/basic-icon-variables';
+
+$js-scroll-object-class-name: '.js-scroll-object' !default;
+
+$js-scroll-object-caution-color: #3e4144 !default;
+$js-scroll-object-caution-size: 0.875em !default;
+
+$js-scroll-object-contents-min-width: 480px;
+
+$js-scroll-object-caution-icon: $bi-caret_left-right !default;
+$js-scroll-object-caution-icon-color: #e51b5e !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$js-scroll-object-class-name} {
+  &__target {
+    display: block;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+  }
+
+  &__caution {
+    display: none;
+    padding: 0;
+    margin: 0;
+    color: $js-scroll-object-caution-color;
+    font-size: $js-scroll-object-caution-size;
+    line-height: 1.15;
+
+    &::before {
+      display: inline-block;
+      margin-right: 0.25rem;
+      color: $js-scroll-object-caution-icon-color;
+      @include basic-icon($js-scroll-object-caution-icon);
+    }
+  }
+
+  &__contents {
+    min-width: $js-scroll-object-contents-min-width;
+  }
+
+  &.has-scroll {
+    #{$js-scroll-object-class-name}__caution {
+      display: block;
+    }
+  }
+}

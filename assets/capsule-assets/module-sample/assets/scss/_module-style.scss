@@ -1,0 +1,120 @@
+@charset 'UTF-8';
+
+$module-prefix: '.module-sample';
+
+body.is-module-sample {
+  display: grid;
+  grid-template-columns: repeat(240px, 1fr);
+}
+
+#{$module-prefix}-header {
+  display: block;
+  padding: 16px;
+  background-color: #232426;
+  color: #fff;
+}
+
+#{$module-prefix}-main {
+  display: block;
+  padding: 16px;
+}
+
+#{$module-prefix}-footer {
+  display: block;
+  padding: 16px;
+}
+
+
+.color-tone-chip {
+  display: block;
+  font-size: 1.0em;
+  line-height: 1.15;
+  text-align: center;
+
+  *+*,
+  li+li {
+    margin-top: 0;
+  }
+
+  dt {
+    display: block;
+    padding: 8px;
+
+    span,
+    small {
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      background-color: rgba($black, 0.32);
+      color: $white;
+    }
+  }
+
+  dd {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+
+    span {
+      font-size: 0.875em;
+    }
+
+    &:first-child {
+
+
+      span,
+      small {
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        background-color: rgba($black, 0.16);
+        color: $white;
+      }
+    }
+  }
+
+  li {
+    display: block;
+    width: (100% / 9);
+    flex-grow: 1;
+    padding: 0.5em;
+  }
+
+
+
+
+  @each $name,
+  $colors in $colors-pallet {
+    &.is-color-#{$name} {
+      $i: 0;
+
+      dt:nth-child(1) {
+        background-color: map-get($colors, '500');
+      }
+
+      dt:nth-child(3) {
+        color: map-get($colors, '500');
+      }
+
+      @each $name,
+      $tone in $colors {
+        $i: $i+1;
+
+        ul:nth-child(1) {
+          li:nth-child(#{$i}) {
+            background-color: $tone;
+          }
+        }
+
+
+        ul:nth-child(2) {
+          li:nth-child(#{$i}) {
+            color: $tone;
+            border-bottom: solid 1px $tone;
+          }
+        }
+
+      }
+    }
+  }
+}

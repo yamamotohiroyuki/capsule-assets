@@ -1,0 +1,779 @@
+@charset 'UTF-8';
+/* ========================================================
+  Reset Style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Default Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$tag-style-name: '.display-' !default;
+
+/* 外部フォント */
+$external-font:'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap' !default;
+
+/* フォントファミリー */
+$basic-font-family: 'Roboto',
+'Noto Sans JP',
+sans-serif !default;
+
+/* font-weight */
+$weight-lighter: 300 !default;
+$weight-normal: 400 !default;
+$weight-bold: 700 !default;
+$weight-bolder: 900 !default;
+
+/* <body>に設定されるfont-weight　*/
+$bacic-font-weight: $weight-normal !default;
+/* Font Size (px) */
+$basic-font-size: 16 !default;
+/* Line Height (px) */
+$basic-line-height: 18 !default;
+
+/*　共通変数（相対推奨 em or % ）　*/
+$small-size: 0.75em !default;
+/* <sup> font size（相対推奨 em or % ） */
+$sup-size: $small-size !default;
+/* <sub> font size（相対推奨 em or % ） */
+$sub-size: $small-size !default;
+
+
+/* H共通 */
+$h-line-height: 1.2 !default;
+$h-weight: $weight-bold !default;
+/*　H1　*/
+$h1-size: 2.5em !default;
+$h1-line-height: $h-line-height !default;
+$h1-weight: $h-weight !default;
+/*　H2　*/
+$h2-size: 2.0em !default;
+$h2-line-height: $h-line-height !default;
+$h2-weight: $h-weight !default;
+/*　H3　*/
+$h3-size: 1.75em !default;
+$h3-line-height: $h-line-height !default;
+$h3-weight: $h-weight !default;
+/*　H4　*/
+$h4-size: 1.5em !default;
+$h4-line-height: $h-line-height !default;
+$h4-weight: $h-weight !default;
+/*　H5　*/
+$h5-size: 1.25em !default;
+$h5-line-height: $h-line-height !default;
+$h5-weight: $h-weight !default;
+/*　H6　*/
+$h6-size: 1.0em !default;
+$h6-line-height: $h-line-height !default;
+$h6-weight: $h-weight !default;
+
+/* バックグラウンド */
+$color-body-bg: #fff !default;
+/* テキスト */
+$color-body: #000 !default;
+/* リンク */
+$color-link: #0d6efd !default;
+/* ホバー */
+$color-hover: #17a2b8 !default;
+
+/* 選択範囲 */
+$selection-style-color: inherit !default;
+$selection-style-bg: #17a2b8 !default;
+$selection-style-bg-alpha: 0.4 !default;
+
+/* mark line */
+$mark-style-color: inherit !default;
+$mark-style-bg: $color-secondary !default;
+$mark-style-bg-alpha: 0.4 !default;
+/* mark の線の太さ % 推奨*/
+$mark-style-bg-width: 60% !default;
+
+/* hr */
+$hr-border-style: 1px solid #ddd !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Font Import
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@if $external-font !='' {
+  @import url($external-font);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Full Reset
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  }
+
+  // stylelint-disable-line at-rule-no-vendor-prefix
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+header,
+main,
+footer,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video,
+details,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  vertical-align: baseline;
+  background-color: rgba(#fff, 0);
+}
+
+article,
+aside,
+figure,
+header,
+main,
+footer,
+nav,
+section,
+details,
+summary {
+  display: block;
+}
+
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  background-color: rgba(#fff, 0);
+  /*
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
+}
+
+:invalid,
+:-moz-submit-invalid,
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  html & body
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+html {
+  font-size: (($basic-font-size / 16) * 100)#{'%'};
+  line-height: line-height-calc($basic-line-height);
+  /* normalize.css */
+  -webkit-text-size-adjust: 100%;
+  /* normalize.css */
+  -ms-overflow-style: scrollbar;
+  /* from bootstrap */
+
+}
+
+body {
+  background-color: $color-body-bg;
+  color: $color-body;
+  font-size: 100%;
+  line-height: line-height-calc($basic-line-height);
+  font-weight: $bacic-font-weight;
+  font-family: $basic-font-family;
+
+
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'palt'1;
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  color: $selection-style-color;
+  background-color: rgba($selection-style-bg, $selection-style-bg-alpha);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Basic tag
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: inherit;
+  font-weight: inherit;
+
+  color: $color-link;
+  transition: all 0.5s;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &.is-underline,
+  .is-underline & {
+    text-decoration: underline;
+  }
+}
+
+
+b,
+#{$tag-style-name}b,
+strong,
+#{$tag-style-name}strong {
+  font-weight: $weight-bold;
+}
+
+i,
+#{$tag-style-name}i,
+em,
+#{$tag-style-name}em {}
+
+small,
+#{$tag-style-name}small {
+  font-size: $small-size;
+}
+
+sub,
+#{$tag-style-name}sub,
+sup,
+#{$tag-style-name}sup {
+  position: relative;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+sup,
+#{$tag-style-name}sup {
+  font-size: $sup-size;
+  vertical-align: super;
+}
+
+sub,
+#{$tag-style-name}sub {
+  font-size: $sub-size;
+  vertical-align: bottom;
+}
+
+mark,
+#{$tag-style-name}mark {
+  color: $mark-style-color;
+  background: linear-gradient(transparent $mark-style-bg-width, rgba($mark-style-bg, $mark-style-bg-alpha) 0%);
+  font-style: normal;
+  font-weight: inherit;
+}
+
+del,
+#{$tag-style-name}del {
+  text-decoration: line-through;
+}
+
+ins,
+#{$tag-style-name}ins {
+  text-decoration: underline;
+}
+
+abbr[title],
+dfn[title] {
+  cursor: help;
+}
+
+ruby {
+  ruby-align: space-between;
+
+  rb {}
+
+  rp {}
+
+  rt {}
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Headline
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+h1,
+#{$tag-style-name}h1 {
+  font-size: $h1-size;
+
+  @if $h-line-height==$h1-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h1-line-height;
+  }
+
+  @if $h-weight==$h1-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h1-weight;
+  }
+}
+
+h2,
+#{$tag-style-name}h2 {
+  font-size: $h2-size;
+
+  @if $h-line-height==$h2-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h2-line-height;
+  }
+
+  @if $h-weight==$h2-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h2-weight;
+  }
+}
+
+h3,
+#{$tag-style-name}h3 {
+  font-size: $h3-size;
+
+  @if $h-line-height==$h3-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h3-line-height;
+  }
+
+  @if $h-weight==$h3-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h3-weight;
+  }
+}
+
+h4,
+#{$tag-style-name}h4 {
+  font-size: $h4-size;
+
+  @if $h-line-height==$h4-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h4-line-height;
+  }
+
+  @if $h-weight==$h4-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h4-weight;
+  }
+}
+
+h5,
+#{$tag-style-name}h5 {
+  font-size: $h5-size;
+
+  @if $h-line-height==$h5-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h5-line-height;
+  }
+
+  @if $h-weight==$h5-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h5-weight;
+  }
+}
+
+h6,
+#{$tag-style-name}h6 {
+  font-size: $h6-size;
+
+
+  @if $h-line-height==$h6-line-height {
+    line-height: $h-line-height;
+  }
+
+  @else {
+    line-height: $h6-line-height;
+  }
+
+  @if $h-weight==$h6-weight {
+    font-weight: $h-weight;
+  }
+
+  @else {
+    font-weight: $h6-weight;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Table
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+table {
+  border-collapse: collapse;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Objects
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+img,
+object,
+embed {
+  max-width: 100%;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  List reset
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* we use a lot of ULs that aren't bulleted. don't forget to restore the bullets within content. */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Blockquote reset
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+blockquote,
+q {
+  quotes: none;
+
+  &::before,
+  &::after {
+    content: '';
+    content: none;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  hr reset
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+hr {
+  display: block;
+  border: 0;
+  margin: 1em 0;
+  padding: 0;
+  overflow: hidden;
+  border-top: $hr-border-style;
+}
+
+/*====================================
+
+  - 7. Computer code
+--------------------------------------
+
+====================================*/
+
+/* standardize any monospaced elements */
+
+pre,
+code,
+kbd,
+samp {}
+
+pre {
+  white-space: pre;
+  /* CSS2 */
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+  white-space: pre-line;
+  /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word;
+  /* IE */
+  font-size: 1em;
+  /* nomalize.css */
+}
+
+/*====================================
+
+  - 8. Form
+--------------------------------------
+
+====================================*/
+
+/* hand cursor on clickable elements */
+
+.is-clickable,
+label,
+input[type='button'],
+input[type='submit'],
+input[type='file'],
+input[type='range'],
+button {
+  cursor: pointer;
+}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+/* make buttons play nice in IE */
+
+button,
+input[type='button'] {
+  width: auto;
+  overflow: visible;
+  transition: all 0.5s;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+input[type='radio'] {
+  vertical-align: text-bottom;
+}
+
+input[type='checkbox'] {
+  vertical-align: bottom;
+}
+
+select,
+input,
+textarea {
+  font-size: 100%;
+}
+
+
+/*
+Show the overflow in IE.
+1. Show the overflow in Edge.
+*/
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/*
+Remove the inheritance of text transform in Edge, Firefox, and IE.
+1. Remove the inheritance of text transform in Firefox.
+*/
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/*
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+/*
+Remove the inner border and padding in Firefox.
+*/
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/*
+Restore the focus styles unset by the previous rule.
+*/
+
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/*
+Correct the padding in Firefox.
+*/
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/*
+1. Correct the text wrapping in Edge and IE.
+2. Correct the color inheritance from `fieldset` elements in IE.
+3. Remove the padding so developers are not caught out when they zero out fieldset` elements in all browsers.
+*/
+
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/*
+Add the correct vertical alignment in Chrome, Firefox, and Opera.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Remove the default vertical scrollbar in IE 10+.
+*/
+
+textarea {
+  overflow: auto;
+}
+
+/*
+1. Add the correct box sizing in IE 10.
+2. Remove the padding in IE 10.
+*/
+
+[type='checkbox'],
+[type='radio'] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Chrome.
+*/
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}

@@ -1,0 +1,33 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Weight
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Default Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$weight-lighter: 300 !default;
+$weight-normal: 400 !default;
+$weight-bold: 700 !default;
+$weight-bolder: 900 !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.weight {
+  &-lighter {
+    font-weight: $weight-lighter;
+  }
+
+  &-normal {
+    font-weight: $weight-normal;
+  }
+
+  &-bold {
+    font-weight: $weight-bold;
+  }
+
+  &-bolder {
+    font-weight: $weight-bolder;
+  }
+}

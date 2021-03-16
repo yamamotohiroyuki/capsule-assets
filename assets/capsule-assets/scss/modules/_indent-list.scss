@@ -1,0 +1,160 @@
+@charset 'UTF-8';
+/* ========================================================
+  Indent List style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$indent-lists: () !default;
+$indent-lists: map-merge(
+  /* array */
+  (
+    /* .indent-list */
+    indent-list: (
+      /* array */
+      padding-top: 0.5em,
+      padding-right: 1.0em,
+      color: inherit,
+      size: inherit,
+      line-height: inherit,
+      inner-tag: span
+      /* array */
+    ),
+    /* .caption */
+    caption: (
+      /* array */
+      padding-top: 0.5em,
+      padding-right: 1.0em,
+      color: #666,
+      size: 0.75em,
+      line-height: 1.25,
+      inner-tag: small
+      /* array */
+    )
+    /* array */
+  ),
+  $indent-lists);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+%indent-list-extend-nest {
+  font-size: 1.0em;
+}
+
+%indent-list-extend-inner-tag {
+  display: inline-block;
+  font-size: 1.0em !important;
+}
+
+%indent-list-extend-before {
+  display: inline-block;
+  content: attr(data-mark);
+}
+
+%indent-list-extend-list {
+  display: inline-table;
+  width: auto;
+}
+
+%indent-list-extend-list-li {
+  display: table-row;
+}
+
+%indent-list-extend-list-li-inner {
+  font-size: 1.0em !important;
+  display: table-cell;
+  vertical-align: top;
+}
+
+%indent-list-extend-list-li-inner-before {
+  display: table-cell;
+  vertical-align: top;
+  width: 1%;
+  white-space: nowrap;
+  content: attr(data-mark);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Function
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@function indent-list-style-set($array, $key, $style) {
+  @return map-get(map-get($array, $key), $style);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@each $name,
+$property in $indent-lists {
+
+  .#{$name} {
+    color: indent-list-style-set($indent-lists, $name, color);
+    font-size: indent-list-style-set($indent-lists, $name, size);
+    line-height: indent-list-style-set($indent-lists, $name, line-height);
+
+    & & {
+      @extend %indent-list-extend-nest;
+    }
+  }
+
+  p {
+
+    &.#{$name} {
+
+      >#{indent-list-style-set($indent-lists, $name, inner-tag)} {
+        @extend %indent-list-extend-inner-tag;
+      }
+
+      &::before {
+        @extend %indent-list-extend-before;
+      }
+    }
+  }
+
+  ul {
+
+    &.#{$name} {
+      @extend %indent-list-extend-list;
+
+      >li {
+        @extend %indent-list-extend-list-li;
+
+        >div,
+        >#{indent-list-style-set($indent-lists, $name, inner-tag)} {
+          @extend %indent-list-extend-list-li-inner;
+        }
+
+        &::before {
+          @extend %indent-list-extend-list-li-inner-before;
+        }
+      }
+    }
+
+    &.#{$name}>li {
+
+      &:first-child {
+
+        >div,
+        >#{indent-list-style-set($indent-lists, $name, inner-tag)},
+        &::before {
+          padding-top: 0;
+        }
+      }
+
+      >div,
+      >#{indent-list-style-set($indent-lists, $name, inner-tag)} {
+        padding-top: indent-list-style-set($indent-lists, $name, padding-top);
+      }
+
+      &::before {
+        padding-top: indent-list-style-set($indent-lists, $name, padding-top);
+        padding-right: indent-list-style-set($indent-lists, $name, padding-right);
+      }
+    }
+
+  }
+
+
+}

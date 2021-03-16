@@ -1,0 +1,74 @@
+@charset 'UTF-8';
+/* ========================================================
+  icon List style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@import '../../icon/scss/basic-icon-variables';
+
+$list-icon-margin: 1.25em !default;
+$list-icon-class-name: '.list-icon' !default;
+
+$list-icon-color: #000 !default;
+$list-icon-symbol: $bi-condition_circle !default;
+
+$icon-lists: () !default;
+$icon-lists: map-merge(
+  /* array */
+  (
+    /* .is-circle */
+    circle: (
+      /* array */
+      color: inherit,
+      icon: $bi-condition_circle-light
+      /* array */
+    ),
+    /* array */
+  ),
+  $icon-lists);
+
+@function icon-list-style-set($array, $key, $style) {
+  @return map-get(map-get($array, $key), $style);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.list-icon {
+  margin-left: $list-icon-margin !important;
+
+  >li {
+    list-style-type: none;
+    list-style-position: inside;
+    text-indent: ($list-icon-margin * -1);
+
+    &::before {
+      display: inline-block;
+      width: $list-icon-margin;
+      text-indent: 0;
+
+      @include basic-icon();
+
+      content: bi-content($list-icon-symbol);
+      color: $list-icon-color;
+    }
+  }
+
+  @each $name,
+  $property in $icon-lists {
+
+    &.is-#{$name} {
+      >li {
+        list-style-type: none;
+
+        &::before {
+          content: bi-content(icon-list-style-set($icon-lists, $name, icon));
+          color: icon-list-style-set($icon-lists, $name, color);
+        }
+      }
+    }
+
+  }
+}

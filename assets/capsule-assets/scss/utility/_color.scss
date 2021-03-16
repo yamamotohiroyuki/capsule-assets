@@ -1,0 +1,100 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  color
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  mixin
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin color-style($name, $propaty: color) {
+
+  $color-array: map-get($colors-pallet, $name);
+
+  @each $tone,
+  $color in $color-array {
+    &-#{$name} {
+      @if($tone) {
+        @if($tone=='500') {
+
+          &,
+          &-#{$tone} {
+            #{$propaty}: $color;
+          }
+        }
+
+        @else {
+          &-#{$tone} {
+            #{$propaty}: $color;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color gray
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.color {
+  &-white {
+    color: $white;
+  }
+
+  &-black {
+    color: $black;
+  }
+
+  @include color-style('gray');
+  @include color-style('blue');
+  @include color-style('indigo');
+  @include color-style('purple');
+  @include color-style('pink');
+  @include color-style('red');
+  @include color-style('orange');
+  @include color-style('yellow');
+  @include color-style('green');
+  @include color-style('teal');
+  @include color-style('cyan');
+
+  @include color-style('brand-primary');
+  @include color-style('brand-secondary');
+  @include color-style('brand-tertiary');
+  @include color-style('brand-quaternary');
+
+  @include color-style('primary');
+  @include color-style('secondary');
+  @include color-style('tertiary');
+  @include color-style('quaternary');
+
+  @include color-style('link');
+  @include color-style('accent');
+  @include color-style('emphasis');
+
+  @include color-style('success');
+  @include color-style('error');
+  @include color-style('attention');
+  @include color-style('danger');
+  @include color-style('warning');
+  @include color-style('info');
+
+  @include color-style('file');
+  @include color-style('pdf');
+  @include color-style('xls');
+  @include color-style('doc');
+  @include color-style('ppt');
+  @include color-style('zip');
+  @include color-style('video');
+
+}
+
+.bg {
+  &-white {
+    background-color: $white;
+  }
+
+  &-black {
+    background-color: $black;
+  }
+
+  @include color-style('gray', background-color);
+}

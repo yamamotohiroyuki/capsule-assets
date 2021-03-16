@@ -1,0 +1,179 @@
+@charset 'UTF-8';
+/* ========================================================
+  Size style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Design size (px) */
+$basic-design-size: 16 !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Mixin
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@mixin spacer($name, $size, $size-name:$size, $propaty:$name) {
+  .#{$name} {
+    &-#{$size-name} {
+      #{$propaty}: $size !important;
+    }
+
+    &x-#{$size-name} {
+      #{$propaty}-right: $size !important;
+      #{$propaty}-left: $size !important;
+    }
+
+    &y-#{$size-name} {
+      #{$propaty}-top: $size !important;
+      #{$propaty}-bottom: $size !important;
+    }
+
+    &t-#{$size-name} {
+      #{$propaty}-top: $size !important;
+    }
+
+    &r-#{$size-name} {
+      #{$propaty}-right: $size !important;
+    }
+
+    &b-#{$size-name} {
+      #{$propaty}-bottom: $size !important;
+    }
+
+    &l-#{$size-name} {
+      #{$propaty}-left: $size !important;
+    }
+
+  }
+}
+
+/* margin */
+@mixin spacer-margin($size, $size-name: $size) {
+  @include spacer(m, $size, $size-name, margin);
+}
+
+/* padding */
+@mixin spacer-padding($size, $size-name: $size) {
+  @include spacer(p, $size, $size-name, padding);
+}
+
+/* margin & padding */
+@mixin spacer-set($size, $size-name: $size) {
+  @include spacer-margin($size, $size-name);
+  @include spacer-padding($size, $size-name);
+}
+
+@mixin sizer($size, $size-name:$size) {
+  .w-#{$size-name} {
+    width: $size !important;
+  }
+
+  .h-#{$size-name} {
+    height: $size !important;
+  }
+}
+
+@mixin sizer-min($size, $size-name:$size) {
+
+  .min-w-#{$size-name} {
+    min-width: $size !important;
+
+  }
+
+  .min-h-#{$size-name} {
+    min-height: $size !important;
+  }
+}
+
+@mixin sizer-max($size, $size-name:$size) {
+
+  .max-w-#{$size-name} {
+    max-width: $size !important;
+  }
+
+  .max-h-#{$size-name} {
+    max-height: $size !important;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@include spacer-margin(auto);
+@include spacer-set(0);
+
+/* px */
+@for $i from 1 through 16 {
+  $n: (($i * $basic-design-size) / 4);
+  @include spacer-set(#{$n}px, $n);
+}
+
+@for $i from 1 through 32 {
+  $n: (($i * $basic-design-size) / 4);
+  @include sizer(#{$n}px, $n);
+}
+
+@for $i from 1 through 64 {
+  $n: (($i * $basic-design-size));
+  @include sizer-min(#{$n}px, $n);
+  @include sizer-max(#{$n}px, $n);
+}
+
+/* em */
+@for $i from 1 through 4 {
+  @include spacer-set(#{$i}em, #{$i}-em);
+}
+
+@for $i from 1 through 8 {
+  @include sizer(#{$i}em, #{$i}-em);
+}
+
+@for $i from 1 through 16 {
+  @include sizer-min(#{$i}em, #{($i)}-em);
+  @include sizer-max(#{$i}em, #{($i)}-em);
+}
+
+/* rem */
+@for $i from 1 through 4 {
+  @include spacer-set(#{$i}rem, #{$i}-rem);
+}
+
+@for $i from 1 through 8 {
+  @include sizer(#{$i}rem, #{$i}-rem);
+}
+
+@for $i from 1 through 16 {
+  @include sizer-min(#{$i}rem, #{$i}-rem);
+  @include sizer-max(#{$i}rem, #{$i}-rem);
+}
+
+/* vh vw */
+@for $i from 1 through 5 {
+  $n: ($i * 5);
+  @include spacer-set(#{$n}vw, #{$n}-vw);
+  @include spacer-set(#{$n}vh, #{$n}-vh);
+}
+
+@for $i from 1 through 20 {
+  $n: ($i * 5);
+
+  @include sizer(#{$n}vw, #{$n}-vw);
+  @include sizer(#{$n}vh, #{$n}-vh);
+
+  @include sizer-min(#{$n}vw, #{$n}-vw);
+  @include sizer-max(#{$n}vw, #{$n}-vw);
+  @include sizer-min(#{$n}vh, #{$n}-vh);
+  @include sizer-max(#{$n}vh, #{$n}-vh);
+}
+
+
+
+/* % */
+@for $i from 1 through 5 {
+  $n: ($i * 5);
+  @include spacer-set(#{$n + 0%}, #{$i}-per);
+}
+
+@for $i from 1 through 20 {
+  $n: ($i * 5);
+  @include sizer(#{$n + 0%}, #{$n}-per);
+}

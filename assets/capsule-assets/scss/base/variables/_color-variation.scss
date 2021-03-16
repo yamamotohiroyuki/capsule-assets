@@ -1,0 +1,165 @@
+@charset 'UTF-8';
+/* ========================================================
+  Colors Variation
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Related variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$colors-pallet: () !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Brand Colors Default
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-primary: #4d2230 !default;
+$color-secondary: #555 !default;
+$color-tertiary: #000 !default;
+$color-quaternary: #fff !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  colors 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$colors: (
+  /* array */
+  primary: $color-primary,
+  secondary: $color-secondary,
+  tertiary: $color-tertiary,
+  quaternary: $color-quaternary
+  /* array */
+);
+
+@function colors($key) {
+  @return map-get($colors, $key);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color primary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-primary-100: color-tone($color-primary, 10);
+$color-primary-200: color-tone($color-primary, 8);
+$color-primary-300: color-tone($color-primary, 6);
+$color-primary-400: color-tone($color-primary, 3);
+$color-primary-500: color-tone($color-primary, 0);
+$color-primary-600: color-tone($color-primary, -3);
+$color-primary-700: color-tone($color-primary, -6);
+$color-primary-800: color-tone($color-primary, -8);
+$color-primary-900: color-tone($color-primary, -10);
+
+$colors-primary: (
+  /* array */
+  '100': $color-primary-100,
+  '200': $color-primary-200,
+  '300': $color-primary-300,
+  '400': $color-primary-400,
+  '500': $color-primary-500,
+  '600': $color-primary-600,
+  '700': $color-primary-700,
+  '800': $color-primary-800,
+  '900': $color-primary-900
+  /* array */
+);
+
+@function colors-primary($key) {
+  @return map-get($colors-primary, $key);
+}
+
+$colors-pallet: colors-pallet-set('primary', $colors-primary);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color secondary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-secondary-100: color-tone($color-secondary, 10);
+$color-secondary-200: color-tone($color-secondary, 8);
+$color-secondary-300: color-tone($color-secondary, 6);
+$color-secondary-400: color-tone($color-secondary, 3);
+$color-secondary-500: color-tone($color-secondary, 0);
+$color-secondary-600: color-tone($color-secondary, -3);
+$color-secondary-700: color-tone($color-secondary, -6);
+$color-secondary-800: color-tone($color-secondary, -8);
+$color-secondary-900: color-tone($color-secondary, -10);
+
+$colors-secondary: (
+  /* array */
+  '100': $color-secondary-100,
+  '200': $color-secondary-200,
+  '300': $color-secondary-300,
+  '400': $color-secondary-400,
+  '500': $color-secondary-500,
+  '600': $color-secondary-600,
+  '700': $color-secondary-700,
+  '800': $color-secondary-800,
+  '900': $color-secondary-900
+  /* array */
+);
+
+@function colors-secondary($key) {
+  @return map-get($colors-secondary, $key);
+}
+
+$colors-pallet: colors-pallet-set('secondary', $colors-secondary);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color tertiary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$color-tertiary-100: color-tone($color-tertiary, 10);
+$color-tertiary-200: color-tone($color-tertiary, 8);
+$color-tertiary-300: color-tone($color-tertiary, 6);
+$color-tertiary-400: color-tone($color-tertiary, 3);
+$color-tertiary-500: color-tone($color-tertiary, 0);
+$color-tertiary-600: color-tone($color-tertiary, -3);
+$color-tertiary-700: color-tone($color-tertiary, -6);
+$color-tertiary-800: color-tone($color-tertiary, -8);
+$color-tertiary-900: color-tone($color-tertiary, -10);
+
+$colors-tertiary: (
+  /* array */
+  '100': $color-tertiary-100,
+  '200': $color-tertiary-200,
+  '300': $color-tertiary-300,
+  '400': $color-tertiary-400,
+  '500': $color-tertiary-500,
+  '600': $color-tertiary-600,
+  '700': $color-tertiary-700,
+  '800': $color-tertiary-800,
+  '900': $color-tertiary-900
+  /* array */
+);
+
+@function colors-tertiary($key) {
+  @return map-get($colors-tertiary, $key);
+}
+
+$colors-pallet: colors-pallet-set('tertiary', $colors-tertiary);
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  color quaternary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+$color-quaternary-100: color-tone($color-quaternary, 10);
+$color-quaternary-200: color-tone($color-quaternary, 8);
+$color-quaternary-300: color-tone($color-quaternary, 6);
+$color-quaternary-400: color-tone($color-quaternary, 3);
+$color-quaternary-500: color-tone($color-quaternary, 0);
+$color-quaternary-600: color-tone($color-quaternary, -3);
+$color-quaternary-700: color-tone($color-quaternary, -6);
+$color-quaternary-800: color-tone($color-quaternary, -8);
+$color-quaternary-900: color-tone($color-quaternary, -10);
+
+$colors-quaternary: (
+  /* array */
+  '100': $color-quaternary-100,
+  '200': $color-quaternary-200,
+  '300': $color-quaternary-300,
+  '400': $color-quaternary-400,
+  '500': $color-quaternary-500,
+  '600': $color-quaternary-600,
+  '700': $color-quaternary-700,
+  '800': $color-quaternary-800,
+  '900': $color-quaternary-900
+  /* array */
+);
+
+@function colors-quaternary($key) {
+  @return map-get($colors-quaternary, $key);
+}
+
+$colors-pallet: colors-pallet-set('quaternary', $colors-quaternary);

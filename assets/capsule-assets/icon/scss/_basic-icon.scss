@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+
+/* ========================================================
+  Basic Icon Style sheet
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables Import
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@import 'basic-icon-variables';
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Font Include
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+@if $basic-icon or $is-module-sample {
+  @font-face {
+    font-family: '#{$basicicon-font-family}';
+    src: url('#{$basicicon-font-path}/#{$basicicon-font-family}.eot?e9wsj5');
+    src: url('#{$basicicon-font-path}/#{$basicicon-font-family}.eot?e9wsj5#iefix') format('embedded-opentype'),
+    url('#{$basicicon-font-path}/#{$basicicon-font-family}.ttf?e9wsj5') format('truetype'),
+    url('#{$basicicon-font-path}/#{$basicicon-font-family}.woff?e9wsj5') format('woff'),
+    url('#{$basicicon-font-path}/#{$basicicon-font-family}.svg?e9wsj5##{$basicicon-font-family}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Class List Import
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@import 'basic-icon-list';

@@ -1,0 +1,199 @@
+@charset 'UTF-8';
+/* ========================================================
+  Numbering style
+======================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$contents-style-line-height: 1.75 !default;
+
+$numbering-title-class-name: '.numbering-title' !default;
+$numbering-title-border-class-name: '.numbering-title-border' !default;
+
+
+$numbering-mark-size: 2.75em !default; // em 推奨 2em 以上
+$numbering-mark-margin-left: 0.5em !default;
+
+$numbering-mark-color: #0d6efd !default;
+$numbering-mark-text-color: #fff !default;
+
+$numbering-list-class-name: '.numbering-list' !default;
+$numbering-list-border-class-name: '.numbering-list-border' !default;
+$numbering-list-format: decimal !default;
+
+$numbering-styles: () !default;
+$numbering-styles: map-merge(
+  /* array */
+  (
+    /* primary */
+    primary: (
+      /* array */
+      color: #e51b5e,
+      text: #fff
+      /* array */
+    ),
+    /* secondary */
+    secondary: (
+      /* array */
+      color: #555,
+      text: #fff
+      /* array */
+    ),
+    /* tertiary */
+    tertiary: (
+      /* array */
+      color: #000,
+      text: #fff
+      /* array */
+    ),
+    /* quaternary */
+    quaternary: (
+      /* array */
+      color: #fff,
+      text: #000
+      /* array */
+    )
+    /* array */
+  ),
+  $numbering-styles);
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Extend
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+%numbering-style {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    @include size($numbering-mark-size);
+    border-radius: calc(#{$numbering-mark-size} / 2);
+  }
+
+  >* {
+    display: block;
+    width: 100%;
+    flex-grow: 1;
+    margin-left: $numbering-mark-margin-left;
+  }
+}
+
+%numbering-style-round {
+
+  &::before {
+    background-color: $numbering-mark-color;
+    color: $numbering-mark-text-color;
+  }
+
+
+}
+
+%numbering-style-circle {
+  &::before {
+    color: $numbering-mark-color;
+    border: solid 1px currentColor;
+  }
+
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#{$numbering-title-class-name},
+#{$numbering-title-border-class-name} {
+  @extend %numbering-style;
+
+  &::before {
+    content: attr(data-numbering);
+  }
+}
+
+#{$numbering-list-class-name},
+#{$numbering-list-border-class-name} {
+  counter-reset: count 0;
+
+  >li {
+    @extend %numbering-style;
+    counter-increment: count;
+    list-style-type: none;
+    list-style-position: inside;
+
+    &::before {
+      content: counter(count, $numbering-list-format);
+    }
+  }
+}
+
+#{$numbering-title-class-name} {
+  @extend %numbering-style-round;
+
+  @each $name,
+  $property in $numbering-styles {
+    &.is-#{$name} {
+      &::before {
+        background-color: map-get(map-get($numbering-styles, $name), color);
+        color: map-get(map-get($numbering-styles, $name), text);
+      }
+    }
+  }
+}
+
+#{$numbering-title-border-class-name} {
+  @extend %numbering-style-circle;
+
+  @each $name,
+  $property in $numbering-styles {
+
+    &.is-#{$name} {
+
+      &::before {
+        color: map-get(map-get($numbering-styles, $name), color);
+      }
+
+    }
+  }
+}
+
+#{$numbering-list-class-name} {
+  li {
+    @extend %numbering-style-round;
+  }
+
+  @each $name,
+  $property in $numbering-styles {
+    &.is-#{$name} {
+      li {
+        &::before {
+          background-color: map-get(map-get($numbering-styles, $name), color);
+          color: map-get(map-get($numbering-styles, $name), text);
+        }
+      }
+    }
+  }
+}
+
+#{$numbering-list-border-class-name} {
+  li {
+    @extend %numbering-style-circle;
+  }
+
+  @each $name,
+  $property in $numbering-styles {
+
+    &.is-#{$name} {
+      li {
+        &::before {
+          color: map-get(map-get($numbering-styles, $name), color);
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,765 @@
+@charset 'UTF-8';
+/* ========================================================
+  Variables
+======================================================== */
+@import 'base/variable';
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$is-module-sample: false !default;
+$theme-color-interval: 8% !default;
+$tag-style-name: '.display-' !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Debug
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$style-debug-border: false !default;
+$style-debug-brakepoint: false !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  icon
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$basic-icon: true !default;
+$basic-icon-class: false !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Fonts
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* いらない時は $external-font: ''; */
+$external-font: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400,700,900|Roboto:300,400,700,900&display=swap' !default;
+
+/* デフォルトのフォントファミリー */
+$basic-font-family: 'Roboto',
+'Noto Sans JP',
+sans-serif !default;
+/* サブフォントファミリー　*/
+$basic-sub-font-family: 'Roboto',
+sans-serif !default;
+/* font-weight */
+$weight-lighter: 300 !default;
+$weight-normal: 400 !default;
+$weight-bold: 700 !default;
+$weight-bolder: 900 !default;
+
+
+/* デフォルトのfont-weight */
+$bacic-font-weight: $weight-normal !default;
+/* Font Size (px) */
+$basic-font-size: 16 !default;
+/* Line Height (px) */
+$basic-line-height: 18 !default;
+/* Design size (px) */
+$basic-design-size: 16 !default;
+
+/*　共通変数（相対推奨 em or % ）　*/
+$small-size: 0.75em !default;
+/* <sup> font size（相対推奨 em or % ） */
+$sup-size: $small-size !default;
+/* <sub> font size（相対推奨 em or % ） */
+$sub-size: $small-size !default;
+
+/* H共通 */
+$h-line-height: 1.2 !default;
+$h-weight: $weight-bold !default;
+/*　H1　*/
+$h1-size: 2.5em !default;
+$h1-line-height: $h-line-height !default;
+$h1-weight: $h-weight !default;
+/*　H2　*/
+$h2-size: 2.0em !default;
+$h2-line-height: $h-line-height !default;
+$h2-weight:$h-weight !default;
+/*　H3　*/
+$h3-size: 1.75em !default;
+$h3-line-height: $h-line-height !default;
+$h3-weight:$h-weight !default;
+/*　H4　*/
+$h4-size: 1.5em !default;
+$h4-line-height: $h-line-height !default;
+$h4-weight: $h-weight !default;
+/*　H5　*/
+$h5-size: 1.25em !default;
+$h5-line-height: $h-line-height !default;
+$h5-weight: $h-weight !default;
+/*　H6　*/
+$h6-size: 1.0em !default;
+$h6-line-height: $h-line-height !default;
+$h6-weight: $h-weight !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Colors
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@import 'base/variables/color-common';
+/* --------------------------------------------------------
+  Base Colors
+-------------------------------------------------------- */
+/* Monochrome */
+$white: #fff !default;
+$black: #000 !default;
+$color-gray: #adb5bd !default;
+
+/* Colors */
+$color-blue: #0d6efd !default;
+$color-indigo: #6610f2 !default;
+$color-purple: #6f42c1 !default;
+$color-pink: #d63384 !default;
+$color-red: #dc3545 !default;
+$color-orange: #fd7e14 !default;
+$color-yellow: #ffc107 !default;
+$color-green: #28a745 !default;
+$color-teal: #20c997 !default;
+$color-cyan: #17a2b8 !default;
+
+/* Variations */
+@import 'base/variables/base-color-variation';
+
+/* --------------------------------------------------------
+  Brand Colors
+-------------------------------------------------------- */
+$color-brand-primary: $color-red !default;
+$color-brand-secondary: $color-blue !default;
+$color-brand-tertiary: $color-yellow !default;
+$color-brand-quaternary: $color-green !default;
+
+/* Variations */
+@import 'base/variables/brand-color-variation';
+
+/* --------------------------------------------------------
+  Colors
+-------------------------------------------------------- */
+$color-primary: $color-red !default;
+$color-secondary: $color-blue !default;
+$color-tertiary: $color-yellow !default;
+$color-quaternary: $color-green !default;
+
+/* Variations */
+@import 'base/variables/color-variation';
+
+/* No Variations */
+$color-light: $color-primary-300 !default;
+$color-dark: $color-primary-700 !default;
+$color-light-gray: $color-gray-300 !default;
+$color-dark-gray: $color-gray-700 !default;
+
+/* --------------------------------------------------------
+  Site Colors
+-------------------------------------------------------- */
+/* リンク */
+$color-link: $color-primary !default;
+/* アクセント */
+$color-accent: $color-primary !default;
+/* 強調 */
+$color-emphasis: $color-primary !default;
+
+/* Variations */
+@import 'base/variables/site-color-variation';
+
+/* No Variations */
+/* バックグラウンド */
+$color-body-bg: $white !default;
+/* テキスト */
+$color-body: $color-gray-900 !default;
+/* ホバー */
+$color-hover: $color-link-600 !default;
+/* 罫線 */
+$color-border: $color-gray-300 !default;
+/* キャプション */
+$color-caption: $color-gray-700 !default;
+
+/* 選択範囲 */
+$selection-style-color: inherit !default;
+$selection-style-bg: $color-primary !default;
+$selection-style-bg-alpha: 0.4 !default;
+
+/* mark line */
+$mark-style-color: inherit !default;
+$mark-style-bg: $color-secondary !default;
+$mark-style-bg-alpha: 0.4 !default;
+/* mark の線の太さ % 推奨*/
+$mark-style-bg-width: 60% !default;
+
+/* border style */
+$border-style: solid 1px $color-border !default;
+
+/* hr */
+$hr-border-style: $border-style !default;
+
+
+
+/* --------------------------------------------------------
+  UI Colors
+-------------------------------------------------------- */
+/* 成功 */
+$color-success: $color-teal !default;
+/* 失敗 */
+$color-error: #f70909 !default;
+/* 注意 */
+$color-attention: $color-red !default;
+/* 危険 */
+$color-danger: $color-pink !default;
+/* 警告 */
+$color-warning: $color-orange !default;
+/* お知らせ */
+$color-info: $color-blue !default;
+
+/* Variations */
+@import 'base/variables/ui-color-variation';
+
+/* --------------------------------------------------------
+  File Colors
+-------------------------------------------------------- */
+$color-file: #4f4f4f !default;
+$color-pdf: #f72702 !default;
+$color-xls: #10753c !default;
+$color-doc: #1e63c2 !default;
+$color-ppt: #ca4c28 !default;
+$color-zip: #518ba1 !default;
+$color-video: #4f4f4f !default;
+
+/* Variations */
+@import 'base/variables/file-color-variation';
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Size
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Breakpoints
+-------------------------------------------------------- */
+$breakpoint-mini: 320px !default;
+$breakpoint-tiny: 416px !default;
+$breakpoint-small: 576px !default;
+$breakpoint-medium: 768px !default;
+$breakpoint-large: 992px !default;
+$breakpoint-big: 1216px !default;
+$breakpoint-huge: 1408px !default;
+$breakpoint-massive: 1600px !default;
+$breakpoint-gigantic: 2400px !default;
+
+/* default */
+$default-breakpoint: $breakpoint-large !default;
+/* mobile */
+$mobile-brakepoint: $breakpoint-small !default;
+/* tablet */
+$tablet-brakepoint: $breakpoint-medium !default;
+
+/* array */
+@import 'base/variables/brakepoint';
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Contents Style
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$contents-style-name: '.contents-style' !default;
+$contents-style-font-size: 1.0em !default;
+$contents-style-line-height: 1.75 !default;
+
+/* owl margin top（相対推奨 em or % ）*/
+$owl-margin: 1.0em !default;
+/* owl li margin top（相対推奨 em or % ）*/
+$owl-li-margin: 0.5em !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Styles
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Display
+-------------------------------------------------------- */
+$display-style-name: '.display-' !default;
+$default-display-type: inline,
+block,
+inline-block,
+none !default;
+
+/* --------------------------------------------------------
+  Table
+-------------------------------------------------------- */
+/* table breakpoint */
+$table-breakpoint: 768px !default;
+
+$table-padding-y: 0.75em !default;
+$table-padding-x: 0.75em !default;
+$table-narrow-padding-y: 0.25em !default;
+$table-narrow-padding-x: 0.25em !default;
+
+$table-border-style: $border-style !default;
+
+/* caption */
+$table-caption-padding-y: 0.25em !default;
+$table-caption-padding-x: 0 !default;
+$table-caption-font-size: em-calc(14) !default;
+$table-caption-align: left !default;
+$table-caption-color: $color-caption !default;
+$table-caption-bg-color: transparent !default;
+
+/* thead th */
+$table-thead-th-color: $white !default;
+$table-thead-th-bg-color: $color-primary-600 !default;
+/* thead td */
+$table-thead-td-color: $white !default;
+$table-thead-td-bg-color: $color-primary-500 !default;
+
+/* tbody th */
+$table-tbody-th-color: inherit !default;
+$table-tbody-th-bg-color: $color-primary-100 !default;
+/* tbody td */
+$table-tbody-td-color: inherit !default;
+$table-tbody-td-bg-color:inherit !default;
+
+/* tfoot th */
+$table-tfoot-th-color: $white !default;
+$table-tfoot-th-bg-color: $color-primary-400 !default;
+/* tfoot td */
+$table-tfoot-td-color: inherit !default;
+$table-tfoot-td-bg-color: $color-primary-100 !default;
+
+$table-stripe-odd-th: inherit !default;
+$table-stripe-odd-td: inherit !default;
+$table-stripe-even-th: $color-primary-200 !default;
+$table-stripe-even-td: $color-primary-100 !default;
+
+
+/* --------------------------------------------------------
+  List
+-------------------------------------------------------- */
+/* List Left style */
+$list-margin: 1.25em !default;
+/* List Type set */
+$default-list-type: circle,
+disc,
+square,
+decimal,
+decimal-zero,
+lower-roman,
+upper-roman,
+lower-alpha,
+upper-alpha,
+cjk-ideographic,
+hiragana,
+hiragana-iroha,
+katakana,
+katakana-iroha,
+none !default;
+
+/* --------------------------------------------------------
+  List Skip
+-------------------------------------------------------- */
+$skip-number-limit: 20 !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Utility
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Align
+-------------------------------------------------------- */
+$align-type: left,
+center,
+right,
+justify !default;
+$vertical-align-type: top,
+text-top,
+middle,
+baseline,
+text-bottom,
+bottom !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Modules
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Hamburger Trigger
+-------------------------------------------------------- */
+/* trigger */
+$hamburger-trigger-class-name: '.hamburger-trigger' !default;
+$hamburger-trigger-change-class-name: '.is-navigation-open' !default;
+$hamburger-trigger-border-radius: basic-size(0.25) !default;
+$hamburger-trigger-width: basic-size(4) !default;
+$hamburger-trigger-height: basic-size(4) !default;
+/* color */
+$hamburger-trigger-color: $color-body !default;
+$hamburger-trigger-color-bg: $color-gray-200 !default;
+/* hover */
+$hamburger-trigger-hover-color: $color-body !default;
+$hamburger-trigger-hover-color-bg: $color-gray-300 !default;
+/* close color */
+$hamburger-trigger-close-color: $white !default;
+$hamburger-trigger-close-color-bg: $color-gray-700 !default;
+/* close hover */
+$hamburger-trigger-close-hover-color: $white !default;
+$hamburger-trigger-close-hover-color-bg: $color-gray-800 !default;
+/* icon */
+$hamburger-icon-class: '.hamburger-icon' !default;
+$hamburger-icon-width: basic-size(2) !default;
+$hamburger-icon-height: basic-size(1) !default;
+$hamburger-icon-line-weight: 1px !default;
+$hamburger-icon-transition-time: 0.5s !default;
+/* text */
+$hamburger-text-class: '.hamburger-text' !default;
+$hamburger-text-weight: $weight-bold !default;
+$hamburger-text-margin-top: basic-size(0.25) !default;
+$hamburger-text-font-size: em-calc(11) !default;
+$hamburger-text-before: 'MENU' !default;
+$hamburger-text-after: 'CLOSE' !default;
+/* wrapper */
+$hamburger-wrapper-class-name: '.fix-wrapper' !default;
+
+/* --------------------------------------------------------
+  Breadcrumb style
+-------------------------------------------------------- */
+$breadcrumb-class-name: '.breadcrumb' !default;
+$breadcrumb-space: 1.0em !default;
+$breadcrumb-icon: true !default;
+$breadcrumb-divide: $bi-angle_right !default;
+
+$breadcrumb-text-color: $color-body !default;
+$breadcrumb-link-color: $color-link !default;
+$breadcrumb-hover-color: $color-hover !default;
+$breadcrumb-divide-color: $color-caption !default;
+
+/* --------------------------------------------------------
+  Indent List
+-------------------------------------------------------- */
+$indent-lists: (
+  /* .indent-list */
+  indent-list: (
+    /* array */
+    padding-top: 0.5em,
+    padding-right: 1.0em,
+    color: inherit,
+    size: inherit,
+    line-height: inherit,
+    inner-tag: span
+    /* array */
+  ),
+  /* .caption */
+  caption: (
+    /* array */
+    padding-top: 0.5em,
+    padding-right: 0.5em,
+    color: $color-caption,
+    size: $small-size,
+    line-height: 1.25,
+    inner-tag: small
+    /* array */
+  )
+  /* array */
+) !default;
+
+
+/* --------------------------------------------------------
+  Peculiar List
+-------------------------------------------------------- */
+$list-margin-peculiar: 2.75em !default;
+$list-peculiar-class-name: '.list-peculiar' !default;
+
+/* brackets margin */
+$list-brackets-margin: $list-margin-peculiar !default;
+/* (1) カッコに数字 */
+$list-brackets-decimal: true !default;
+/* (i) カッコに小文字ローマ数字 */
+$list-brackets-lower-roman: false !default;
+/* (I) カッコに大文字ローマ数字 */
+$list-brackets-upper-roman: false !default;
+/* (a) カッコに小文字アルファベット */
+$list-brackets-lower-alpha: false !default;
+/* (A) カッコに大文字アルファベット */
+$list-brackets-upper-alpha: false !default;
+/* (あ) カッコにひらがな */
+$list-brackets-hiragana: false !default;
+/* (い) カッコにいろは */
+$list-brackets-hiragana-iroha: false !default;
+/* (ア) カッコにカタカナ */
+$list-brackets-katakana: false !default;
+/* (イ) カッコにイロハ */
+$list-brackets-katakana-iroha: false !default;
+
+/* side brackets margin */
+$list-side-brackets-margin: $list-margin-peculiar !default;
+/* 1) カッコに数字 */
+$list-side-brackets-decimal: true !default;
+/* i) カッコに小文字ローマ数字 */
+$list-side-brackets-lower-roman: false !default;
+/* I) カッコに大文字ローマ数字 */
+$list-side-brackets-upper-roman: false !default;
+/* a) カッコに小文字アルファベット */
+$list-side-brackets-lower-alpha: false !default;
+/* A) カッコに大文字アルファベット */
+$list-side-brackets-upper-alpha: false !default;
+/* あ) カッコにひらがな */
+$list-side-brackets-hiragana: false !default;
+/* い) カッコにいろは */
+$list-side-brackets-hiragana-iroha: false !default;
+/* ア) カッコにカタカナ */
+$list-side-brackets-katakana: false !default;
+/* イ) カッコにイロハ */
+$list-side-brackets-katakana-iroha: false !default;
+
+/* dot margin */
+$list-dot-margin: $list-margin-peculiar !default;
+/* 1. ドットに数字 */
+$list-dot-decimal: true !default;
+/* i. ドットに小文字ローマ数字 */
+$list-dot-lower-roman: false !default;
+/* I. ドットに大文字ローマ数字 */
+$list-dot-upper-roman: false !default;
+/* a. ドットに小文字アルファベット */
+$list-dot-lower-alpha: false !default;
+/* A. ドットに大文字アルファベット */
+$list-dot-upper-alpha: false !default;
+/* あ. ドットにひらがな */
+$list-dot-hiragana: false !default;
+/* い. ドットにいろは */
+$list-dot-hiragana-iroha: false !default;
+/* ア. ドットにカタカナ */
+$list-dot-katakana: false !default;
+/* イ. ドットにイロハ */
+$list-dot-katakana-iroha: false !default;
+
+/* character */
+/* ① 丸数字 */
+$list-circle-decimal: true !default;
+/* ❶ 丸数字 */
+$list-round-decimal: false !default;
+
+/* --------------------------------------------------------
+  Numbering style
+-------------------------------------------------------- */
+$numbering-title-class-name: '.numbering-title' !default;
+$numbering-title-border-class-name: '.numbering-title-border' !default;
+
+$numbering-mark-size: 2.5em; // em 推奨 2.5em 以上
+$numbering-mark-margin-left: 0.5em !default;
+
+$numbering-mark-color: $color-primary !default;
+$numbering-mark-text-color: #fff !default;
+
+$numbering-list-class-name: '.numbering-list' !default;
+$numbering-list-border-class-name: '.numbering-list-border' !default;
+$numbering-list-format: decimal !default;
+
+$numbering-styles: (
+  /* primary */
+  primary: (
+    /* array */
+    color: $color-primary,
+    text: $white
+    /* array */
+  ),
+  /* secondary */
+  secondary: (
+    /* array */
+    color: $color-secondary,
+    text: $white
+    /* array */
+  ),
+  /* tertiary */
+  tertiary: (
+    /* array */
+    color: $color-tertiary,
+    text: $white
+    /* array */
+  ),
+  /* quaternary */
+  quaternary: (
+    /* array */
+    color: $color-quaternary,
+    text: $white
+    /* array */
+  )
+  /* array */
+) !default;
+
+/* --------------------------------------------------------
+  icon List
+-------------------------------------------------------- */
+$list-icon-margin: $list-margin !default;
+$list-icon-class-name: '.list-icon' !default;
+
+$list-icon-color: $color-primary !default;
+$list-icon-symbol: $bi-condition_blank-circle !default;
+
+$icon-lists: (
+  /* array */
+  (
+    /* .is-circle */
+    disc: (
+      /* array */
+      color: $list-icon-color,
+      icon: $bi-condition_circle
+      /* array */
+    ),
+    /* .is-circle */
+    circle: (
+      /* array */
+      color: $list-icon-color,
+      icon: $bi-condition_circle-bold
+      /* array */
+    ),
+    /* .is-square */
+    square: (
+      /* array */
+      color: $list-icon-color,
+      icon: $bi-condition_square
+      /* array */
+    ),
+    /* .is-box */
+    box: (
+      /* array */
+      color: $list-icon-color,
+      icon: $bi-condition_square-bold
+      /* array */
+    ),
+    /* array */
+  )
+  /* array */
+) !default;
+
+/* --------------------------------------------------------
+  Link icon style
+-------------------------------------------------------- */
+$link-icon-margin: 0.25em !default;
+/* Blank */
+$link-icon-blank-icon: $bi-blank_line !default;
+$link-icon-blank-color: inherit !default;
+
+/* PDF */
+$link-icon-pdf-icon: $bi-document_file-pdf-border !default;
+$link-icon-pdf-color: $color-pdf !default;
+
+/* xls */
+$link-icon-xls-icon: $bi-document_file-excel-border !default;
+$link-icon-xls-color: $color-xls !default;
+
+/* zip */
+$link-icon-zip-icon: $bi-document_file-zip-border !default;
+$link-icon-zip-color: $color-zip !default;
+
+/* arrow */
+$link-icon-arrow-icon: $bi-arrow_right !default;
+$link-icon-arrow-back-icon: $bi-arrow_left !default;
+$link-icon-arrow-color: $color-primary !default;
+
+/* --------------------------------------------------------
+  Number display style
+-------------------------------------------------------- */
+$number-display-class-name: '.number-display' !default;
+$number-display-font-size-big: 2.0em !default;
+$number-display-font-size-small: 1.0em !default;
+
+/* --------------------------------------------------------
+  Divide Text style
+-------------------------------------------------------- */
+$divide-text-class-name: '.divide-text' !default;
+$divide-text-margin-x: 1em !default;
+$divide-text-border-style: $border-style !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Components
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* --------------------------------------------------------
+  Archive List style
+-------------------------------------------------------- */
+/* Base */
+$archive-list-class-name: '.archive-list' !default;
+$archive-list-breakpoint: $default-breakpoint !default;
+
+/* style */
+$archive-list-font-size: 1.0em !default;
+$archive-list-line-height: 1.25 !default; // 'inherit' 禁止
+$archive-list-header-padding-right: 1.0em !default;
+
+$archive-list-y-padding-s: basic-size(0.5) !default;
+$archive-list-y-padding-l: basic-size(0.75) !default;
+
+$archive-list-revied-spase-s: basic-size(1) !default;
+$archive-list-revied-spase-l: basic-size(2) !default;
+
+$archive-list-revied-margin-s: basic-size(0.25) !default;
+$archive-list-revied-margin-l: basic-size(0.5) !default;
+
+$archive-list-divid-border: $table-border-style !default;
+$archive-list-divid-revied: dotted 1px $color-border !default;
+
+$archive-list-top-border: true !default;
+$archive-list-bottom-border: true !default;
+
+/* sticker */
+
+$archive-time-class-name: '.time' !default;
+$archive-sticker-class-name: '.sticker' !default;
+$archive-time-font-size: em-calc(14) !default;
+$archive-time-color: $color-primary !default;
+
+$archive-sticker-font-size: em-calc(14) !default;
+$archive-sticker-line-height: 1.15 !default;
+$archive-sticker-min-width: basic-size(5) !default;
+$archive-sticker-color: $color-primary !default;
+$archive-sticker-border-radius: basic-size(0.25) !default;
+$archive-sticker-bg-color: $color-primary-200 !default;
+
+$archive-sticker-y-padding: basic-size(0.25) !default;
+$archive-sticker-x-padding: basic-size(1) !default;
+
+$archive-sticker-border: solid 1px $color-primary !default;
+
+/* --------------------------------------------------------
+  Timeline style
+-------------------------------------------------------- */
+/* Base */
+$timeline-class-name:'.timeline' !default;
+$timeline-breakpoint: $default-breakpoint !default;
+
+/* style */
+$timeline-line-height: 1.25 !default; // 'inherit' 禁止
+
+$timeline-dot-size-s: basic-size(0.5) !default;
+$timeline-dot-size-l: basic-size(0.5) !default;
+
+$timeline-date-color: $color-primary !default;
+$timeline-dot-color: $color-primary !default;
+
+$timeline-border-style: $table-border-style !default;
+$timeline-top-border-style: $timeline-border-style !default;
+$timeline-bottom-border-style: $timeline-border-style !default;
+$timeline-line-border-style: $timeline-border-style !default;
+
+$timeline-top-bottom-border-show: false !default;
+
+$timeline-text-padding: 0.25em !default;
+
+$timeline-side-padding-s: basic-size(1) !default;
+$timeline-side-padding-l: basic-size(4) !default;
+
+$timeline-y-padding-s: basic-size(0.5) !default;
+$timeline-y-padding-l: basic-size(0.5) !default;
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  JS Components
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+$parents-class-name: '.is-parents' !default;
+$current-class-name: '.is-current' !default;
+$active-class-name: '.is-active' !default;
+$same-category-class-name: '.is-same-category';
+$navigation-open-class-name: '.is-navigation-open' !default;
+$fix-wrapper-class-name: '.fix-wrapper' !default;
+
+
+/* --------------------------------------------------------
+  JS Scroll Object
+-------------------------------------------------------- */
+$js-scroll-object-class-name: '.js-scroll-object' !default;
+
+$js-scroll-object-caution-color: $color-caption !default;
+$js-scroll-object-caution-size: em-calc(14) !default;
+
+$js-scroll-object-contents-min-width: 480px;
+
+$js-scroll-object-caution-icon: $bi-caret_left-right !default;
+$js-scroll-object-caution-icon-color: $color-primary !default;
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  other variables
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
