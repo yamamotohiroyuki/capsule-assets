@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": "../"
+    }
+  ],
+  "settings": {
+    /* インデント設定 */
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": true, // スペースの表示
+    "editor.insertSpaces": true, // デフォルト設定なのでなくてもOK
+
+    /* Live Sass Compile 設定 */
+    "liveSassCompile.settings.generateMap": false, // css.mapを書き出す設定
+    "liveSassCompile.settings.excludeList": [ //対象外とするフォルダを指定
+      ".vscode/**",
+      ".history/**",
+    ],
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".dev.css",
+        "savePath": "/assets/css/"
+      },
+      {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "/assets/css/"
+      },
+    ],
+
+    /* Live Server 設定 */
+    //"liveServer.settings.port": 8889,
+    /*
+    "liveServer.settings.proxy": {
+      "enable": true, // プロキシの使用設定
+      "baseUri": "/", 
+      "proxyUri": "http://capsule:8888/", // 実際の環境によって修正する。
+    },*/
+  }
+}
